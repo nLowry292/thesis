@@ -1,0 +1,131 @@
+%%% -- Theorem Setup -- %%%
+\newtheorem{definition}{Definition}[section]
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{proposition}{Proposition}[section]
+\renewcommand{\qedsymbol}{$\blacksquare$}
+
+\newtheorem{innercustomthm}{Theorem}
+  \newenvironment{introthm}[1]
+    {\renewcommand\theinnercustomthm{#1}\innercustomthm}
+    {\endinnercustomthm}
+
+\theoremstyle{remark}
+\newtheorem{remark}{Remark}[section]
+
+  %%% -- Example Setup -- %%%
+  \usepackage{mdframed} % Add easy frames to paragraphs
+  \usepackage{lipsum} % For dummy text
+  \usepackage{xparse} % Add support for \NewDocumentEnvironment
+  \definecolor{graylight}{cmyk}{0,.97,.95,.38} % define color using xcolor syntax
+
+  \newmdenv[ % Define mdframe settings and store as leftrule
+    linecolor=graylight,
+    topline=false,
+    bottomline=false,
+    rightline=false,
+    skipabove=\topsep,
+    skipbelow=\topsep
+  ]{leftrule}
+
+  \NewDocumentEnvironment{example}{O{\textbf{Example:}}} % Define example environment
+  {\begin{leftrule}\noindent\textcolor{graylight}{#1}\par}
+  {\end{leftrule}}
+
+
+
+%%% -- Math Shortcuts -- %%%
+\DeclareMathOperator{\im}{Im}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\Ext}{Ext}
+\DeclareMathOperator{\Tor}{Tor}
+\DeclareMathOperator{\rad}{rad}
+\DeclareMathOperator{\Ann}{Ann}
+\DeclareMathOperator{\Ass}{Ass}
+\DeclareMathOperator{\Real}{Re}
+\DeclareMathOperator{\Imag}{Im}
+\DeclareMathOperator{\Endo}{End}
+\DeclareMathOperator{\ad}{ad}
+\DeclareMathOperator{\Spec}{Spec}
+\DeclareMathOperator{\ord}{ord}
+\DeclareMathOperator{\Map}{Map}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\Gal}{Gal}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\Hilb}{Hilb}
+\DeclareMathOperator{\Hilbit}{\mathit{Hilb}}
+\DeclareMathOperator{\tors}{tors}
+
+% shortcut commands
+\newcommand{\inv}{^{-1}}
+\newcommand{\ideal}{\triangleleft}
+\newcommand{\intersect}{\cap}
+\newcommand{\union}{\cup}
+\newcommand{\bN}{\mathbb{N}}
+\newcommand{\bZ}{\mathbb{Z}}
+\newcommand{\bQ}{\mathbb{Q}}
+\newcommand{\bR}{\mathbb{R}}
+\newcommand{\bC}{\mathbb{C}}
+\newcommand{\bP}{\mathbb{P}}
+\newcommand{\bA}{\mathbb{A}}
+\newcommand{\bF}{\mathbb{F}}
+\newcommand{\sheaf}{\mathcal{O}}
+\newcommand{\doubleprime}{\prime\prime}
+\newcommand{\ra}{\rightarrow}
+\newcommand{\la}{\leftarrow}
+\newcommand{\tensor}{\otimes}
+
+\newcommand{\catname}[1]{{\normalfont\textbf{#1}}}
+\newcommand{\Set}{\catname{Set}}
+\newcommand{\Sch}{\catname{Sch}}
+
+\def\C{\mathbb{C}}
+\def\Z{\mathbb{Z}}
+\def\Q{\mathbb{Q}}
+\def\P{\mathbb{P}}
+\def\N{\mathbb{N}}
+\def\<{{\langle}}
+\def\>{{\rangle}}
+\def\d{{\partial}}
+\newcommand{\T}{\mathcal{T}}
+\newcommand{\F}{\mathcal{F}}
+\newcommand{\E}{\mathcal{E}}
+\newcommand{\K}{\mathcal{K}}
+\newcommand{\R}{\mathbf{R}}
+\renewcommand{\L}{\mathbf{L}}
+\newcommand{\tens}[1]{\mathbin{\mathop{\otimes}\limits^{\scriptscriptstyle #1}}}
+\newcommand{\res}[2]{\mathbin{\operatorname{Res}^{#2}_{#1}}}
+\newcommand{\ind}[2]{\mathbin{\operatorname{Ind}^{#2}_{#1}}}
+\renewcommand{\ker}{\operatorname{Ker}}
+\renewcommand{\dim}{\operatorname{dim}}
+\newcommand{\spanset}{\text{Span}}
+\newcommand{\A}{\mathcal{A}}
+\newcommand{\B}{\mathcal{B}}
+\newcommand{\D}{\mathrm{D}}
+\newcommand{\perf}{\operatorname{Perf}}
+\newcommand{\dgperf}{\operatorname{Perf_{dg}}}
+\newcommand{\spec}{\operatorname{Spec}}
+\newcommand{\proj}{\operatorname{Proj}}
+\newcommand{\sproj}{\underline{\operatorname{Proj}}}
+%\newcommand{\sproj}{\operatorname{\mathscr{P}\kern -1pt \mathit{roj}}}
+\renewcommand{\O}{\mathcal{O}}
+\renewcommand{\hom}{\operatorname{Hom}}
+\newcommand{\ext}{\operatorname{Ext}}
+\newcommand{\coh}{\operatorname{coh}}
+\newcommand{\qcoh}{\operatorname{Qcoh}}
+\newcommand{\hilb}{\operatorname{Hilb}}
+\newcommand{\shom}{\operatorname{\mathscr{H}\kern -1pt \mathit{om}}}
+\newcommand{\sext}{\operatorname{\mathscr{E}\kern -1pt \mathit{xt}}}
+\newcommand{\stor}{\operatorname{\mathscr{T}\kern -1pt \mathit{or}}}
+
+\newcommand{\red}[1]{\textcolor{red}{#1}}
+\newcommand{\purple}[1]{\textcolor{purple}{#1}}
+\newcommand{\green}[1]{\textcolor{green}{#1}}
+
+\DeclareRobustCommand{\SkipTocEntry}[5]{}
+
+%%% -- Document Setup -- %%%
+\setlength{\parindent}{0.4cm}
+\newcommand{\pspace}{\hspace{0.4cm}}
+\allowdisplaybreaks
