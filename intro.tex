@@ -1,10 +1,131 @@
 \chapter{Introduction}
 
-describe the basic theory of abelian varieties, perhaps. probably should talk a bit about model theory too
+Abelian varieties play an important role for both the algebraic and arithmetic geometer alike. Their rigid geometric structure simplifies the analytic questions one might ask, while their arithmetic structure allows one to employ to number-theoretic ideas. Elliptic curves provide the first and simplest examples of abelian varieties. The analytic theory of elliptic curves dates back largely to Abel and Jacobi, who, in giving a basis for the theory of elliptic functions, discovered higher dimensional abelian varieties known today as Jacobians. Soon after, Weierstrass discovered the $\wp$-function - an explicit, albeit highly transcendental, parametrization of elliptic curves. It is also around this time that Riemann introduces the idea of manifolds, giving a firm foundation to the theory of higher dimensional abelian varieties. To this end, he introduces the Riemann bilinear relations as well as theta functions. In 1869, Weierstrass uses Riemann's foundational work to prove that abelian functions satisfy certain algebraic relations, attracting attention from the algebraists. Kronecker uses this algebraic structure of abelian varieties to solve Hilbert's 12th problem for the case of imaginary quadratic fields and in 1922, Mordell proves that the group of $\bQ$-points on an elliptic curve is in fact finitely generated. In the 1940's, Weil gives the theory of abelian varieties its modern formulation and uses his new theory to greatly extend Mordell's result.
+
+In this thesis, we employ model-theoretic transfer principles to deduce arithmetic properties of abelian varieties over real closed and $p$-adically closed fields by appealing to the known structure of abelian varieties over $\bR$ and $\bQ_p$.
+
+\section{Abelian Varieties}
+\begin{definition}
+ Let $k$ be a field. An abelian variety over $k$ is a proper and connected group variety. 
+\end{definition}
+
+NOTE: for purposes of this paper, all abelian varieties are positive-dimensional
+
+While it may not look like it, these conditions are quite strong. In particular, they will imply that the group law is always commutative and that abelian varieties are projective.
+
+\begin{definition}
+A homomorphism $f:A\ra B$ of abelian varieties is called an \emph{isogeny} if $f$ is surjective with finite kernel. The degree of an isogeny is the order of the kernel (as a group scheme).
+\end{definition}
+
+As abelian varieties are group schemes, there is a multiplication by $n$ map $[n]:A\ra A$ for each $n\in\bZ$. We denote the kernel of this map by $A[n]$ (remember that this is a group scheme and we identify $A[n]$ with it's $\bar{k}$-points). The most important basic result for us is the following:
+
+\begin{proposition}
+\label{torsion-algebraically-closed}
+Suppose $\text{char}(k)\nmid n$. Then the degree of $[n]:A\ra A$ is $n^{2g}$, where $g=\dim A$. In particular, if $k$ is characteristic zero, we have $A(\bar{k})[\tors]\cong (\bQ/\bZ)^{2g}$.
+\end{proposition}
+\begin{proof}
+We first recall two facts. First, if $X$ and $Y$ are proper varieties of the same dimension and $f:X\ra Y$ is surjective, then $f^*$ induces a finite extension $k(X)/k(Y)$ of degree $d$. Now if $D_1,\dots, D_n$ are Cartier divisors on $Y$, we find the following relation between intersection numbers: $$(f^*D_1,\dots, f^*D_n)_X=d(D_1,\dots, D_n)_Y.$$ Second, if $X$ is an abelian variety and $\mathcal{L}$ is a line bundle on $X$, then $[n]^*\mathcal{L}\cong \mathcal{L}^{\frac{n^2+n}{2}}\otimes [-1]^*\mathcal{L}^{\frac{n^2-n}{2}}$. This follows from the so-called ``theorem of the cube". 
+
+Now let $D$ be an ample, symmetric divisor on $A$; such a divisor exists because there is an ample line bundle $\mathcal{L}$ over $A$, since $A$ is projective, and $\mathcal{L}\otimes [-1]^*\mathcal{L}$ will be ample and symmetric). By the second fact, we have that $[n]^*D\sim n^2 D$ and by the first fact we find that $\text{deg}([n])=n^{2g}$ (intersect $[n]^*D$ with itself $g$-times). That $A(\bar{k})[\tors]$ is of the given form is an easy exercise in group theory.
+\end{proof}
+
+If $A$ is defined over $k$, the Galois group $G:=\Gal(\bar{k}/k)$ acts on each $A(\bar{k})[n]$, so we get a Galois representation $G\ra GL_{2g}(\bZ/n\bZ)$. Representation theory is significantly easier in characteristic zero, so we are lead to consider instead the inverse limit $T_l(A):=\injlim A[l^n]\cong \bZ_l^{2g}$ given by $[l]:A[l^{n+1}]\ra A[l^n]$, where $l$ is a prime. Since the multiplication-by-$l$ map is Galois-equivariant, $T_l(A)$ comes equipped with a natural Galois action and we get a representation $G\ra GL_{2g}(\bZ_l)$. The arithmetic properties of abelian varieties are largely controlled by this system of Galois representations.
+
+One can also discuss abelian \emph{schemes}, which are like families of abelian varieties defined over some base of parameters. An important example of such a scheme is  $\mathcal{E}\ra \Spec(\bZ[a,b][1/(4a^3+27b^2)])=S$, where $\mathcal{E}$ is the closed subscheme of $\bP^2\times S$ cut out by $Y^2Z=X^3+aXZ^2+bZ^3$.
+
+\section{Abelian Varieties over $\bQ$}
+The most fundamental result for abelian varieties over $\bQ$ (or more generally over number fields) is the celebrated theorem of Mordell and Weil:
+\begin{theorem}
+\label{mordell-weil}
+Let $K$ be a number field and $A/K$ an abelian variety. Then $A(K)$ is a finitely generated abelian group.
+\end{theorem}
+\begin{proof}
+sketch (perhaps unnecessary): heights + $A/2A$ is finite (using galois cohomology)
+\end{proof}
+
+Given an abelian variety $A$ defined over a number field $K$, the theorem tells us we have $A(K)\isom \bZ^r \oplus T$, where $T$ is the torsion subgroup. The determination of the rank $r$ and the structure of the torsion subgroup $T$ remain active areas of research.
 
 \section{Abelian Varieties over $\bC$}
 
-mumford
+Abelian varieties were first discovered by means of their intimate connection with abelian functions, which are meromorphic functions satisfying a certain number of periodicity conditions. One can learn a great deal of information about abelian functions by studying differential forms on complex algebraic curves. Associated to any curve $C$ of genus $g$ is an abelian variety $J$ of dimension $g$ called the \emph{Jacobian} of $C$. The group structure of the Jacobian variety greatly simplifies the study of differential forms on $C$.
 
-\section{Abelian varieties over an algebraically closed field of characteristic 0}
-lefschetz principle
+The original impetus for studying elliptic curves came from a detailed analysis of so-called ``elliptic functions" --- meromorphic functions $f$ that are ``doubly periodic" in the sense that there are real-linearly independent complex numbers $\omega_1$ and $\omega_2$ so that $f(z)=f(z+a\omega_1+b\omega_2)$ for all $z\in \bC$ and $a,b\in\bZ$. Some elementary complex analysis will show us that any such $f$ must have a pole of order at least 2 at each point in $\Lambda:=\bZ\omega_1\oplus \bZ\omega_2$. With this in mind, Weierstrass discovered the $\wp$-function: $$\wp(z;\omega_1,\omega_2) = \frac{1}{z^2} + \sum\limits_{\lambda\in\Lambda\setminus\{0\}} \frac{1}{(z-\lambda)^2}-\frac{1}{\lambda^2}$$
+
+One can check manually that both $\wp$ and its derivative $\wp'$ are doubly periodic with respect to the lattice $\Lambda$. In fact, one can even prove that $\bC(\Lambda)=\bC(\wp,\wp')$, i.e. \emph{every} elliptic function with respect to $\Lambda$ is a rational function in $\wp$ and $\wp'$. Moreover, one can prove that $\wp$ satisfies the differential equation $(y')^2 = 4y^3-g_2y-g_3$, where $g_2$ and $g_3$ are constants depending on $\Lambda$. In other words, the $\wp$-function parametrizes an elliptic curve! Amazingly enough, \emph{every} elliptic curve can be parametrized in such a way:
+
+\begin{theorem}
+\label{uniformization}
+Let $E/\bC$ be an elliptic curve. Then there is a lattice $\Lambda\subset \bC$ so that $\phi:\bC/\Lambda\ra E(\bC)$ defined by $\phi(z+\Lambda)=[\wp(z;\Lambda):\wp'(z;\Lambda):1]$ and $\phi(\Lambda) = [0:1:0]$ is an isomorphism of complex analytic Lie groups.
+\end{theorem}
+
+One might describe the correspondence between elliptic curves and elliptic functions thus: elliptic curves are the universal domains of elliptic functions (perhaps there's a better way to summarize it? also ``universal domain" has a precise meaning that has nothing to do with this, so perhaps another choice of words is in order)
+
+The obvious next step is to consider \emph{abelian functions} --- meromorphic functions of $n$ complex variables with $2n$ real-independent periods. Naturally, it was found that abelian varieties are the universal domains of abelian functions!
+
+However, as is often the case in mathematics, the story is much more complicated in higher dimensions. As one might expect from the case of elliptic curves, an abelian variety $A/\bC$ is still a complex torus, i.e. there is a lattice $\Lambda\subset \bC^g$ so that $A(\bC)\isom \bC^g/\Lambda$. However, not every complex torus will be an abelian variety; there are non-trivial conditions on the lattice $\Lambda$ that must be satisfied. Without going into too much detail, one proves that in order for a complex torus to be an abelian variety, it is necessary and sufficient that there be a non-degenerate Hermetian form on $\bC^g$ whose imaginary part is integer-valued on $\Lambda$. Such a form is called a \emph{Riemann form} for $T=\bC^g/\Lambda$. One can use this Riemann form to construct \emph{theta functions}, which play the role of the Weierstrass $\wp$-function.
+
+\section{Abelian varieties over other fields}
+
+The theory of abelian varieties of $\bR$ and $\bQ_p$ is quite well-understood, but we will discuss these particular cases in detail below. 
+
+There is an extension of the Mordell-Weil Theorem due to N\'eron:
+
+\begin{theorem}
+\label{neron-mordell-weil}
+Let $K$ be a field which is finitely generated over its prime field and let $A/K$ be an abelian variety. Then $A(K)$ is a finitely generated abelian group.
+\end{theorem}
+
+On the other end of the spectrum, Mumford proved that if $k$ is algebraically closed, then $A(k)$ is a divisible group. In particular, if $k$ is characteristic zero, then $A(k)[\tors]$ itself is divisible (by prop \ref{torsion-algebraically-closed}) (and this is probably true regardless of characterstic); an old theorem of Baer tells us that $A(k)$ is torsion split, i.e. $A(k)\isom V\oplus A(k)[\tors]$. $V$ is torsion-free and \emph{uniquely} divisible, so in fact $V$ is a $\bQ$-vector space; the dimension of this $\bQ$-vector space was calculated by Frey and Jarden:
+
+\begin{theorem}
+\label{frey-jarden}
+Let $K$ be an algebraically closed field which is not the algebraic closure of a finite field and let $A/K$ be an abelian variety. Then the rank of $A(K)$ is equal to the cardinality of $K$.
+\end{theorem}
+
+In particular, we come to the exact opposite conclusion of the Mordell-Weil theorem: the rank of $A(k)$ is always infinite when $k$ is algebraically closed (and not equal to $\bar{\bF_p}$. This leads us to the following definition:
+
+\begin{definition}
+A field $K$ is called \emph{anti-Mordell-Weil} (or simply \emph{AMW}) if for every abelian variety $A/K$ (remember our convention about abelian varieties being positive-dimensional), the group $A(K)$ has infinite rank.
+\end{definition}
+
+So we have seen that algebraically closed fields of characteristic zero are AMW. 
+
+\begin{definition}
+A field $F$ is called \emph{ample} (or \emph{large}) if for every smooth $F$-curve $C$, either $C(F)=\emptyset$ or $C(F)$ is infinite.
+\end{definition}
+
+We have the following recent theorem of Fehm and Petersen:
+
+\begin{theorem}
+\label{fehm-petersen}
+Let $F$ be an ample field that is not algebraic over a finite field. Then $F$ is AMW.
+\end{theorem}
+
+It is easy enough to verify that both real closed and $p$-adically closed fields are ample and therefore AMW.
+
+\section{Model Theory}
+It is quite common to reduce questions about algebraic varieties over an arbitrary algebraically closed field of characteristic zero to questions about algebraic varieties over $\bC$ by appealing to the \emph{Lefschetz princple}: if $\phi$ is a first-order statement in the language of rings and $k$ is an algebraically closed field of characteristic zero, then $\phi$ is holds in $k$ if and only if $\phi$ holds in $\bC$. The basic idea is that statements about varieties and morphisms are intrinsically statements about solving certain systems of polynomial equations, that the varieties and morphisms themselves can be defined over a finitely generated extension of $\bQ$, and any such field can be embedded into $\bC$. For instance, one can prove 
+
+\begin{proposition}
+Let $k$ be an algebraically closed field of characteristic zero and let $A/k$ be an abelian variety of dimension $g$. Then $A(k)[\tors]\cong (\bQ/\bZ)^{2g}$.
+\end{proposition}
+\begin{proof}
+sketch: The data specifying the abelian variety (the coefficients of the defining equations, multiplication maps, identity, etc.) all live in a finitely generated extension $L$ of $\bQ$. $L$ can be embedded into $\bC$. In fact, we can embed $L\subset\bar{L}\subset \bC$ as well. Now for each $n$, we have $A(k)[n]=A(\bar{L})[n]=A(\bC)[n]\equiv (\bZ/n\bZ)^2g$. The conclusion from here is purely group-theoretic.
+\end{proof}
+
+While this technique works for algebraically closed fields, it won't work for real closed fields. (Does it?? I don't think so) 
+
+\begin{theorem}
+\label{transfer-principle}
+Let $\phi$ be any sentence in the language of groups. Then given some algebraic data defining an abelian variety $A/k$, one can suitably ``transform" $\phi$ into a sentence in the language of rings with parameters in $k$ (actually, with parameters in the given algebraic data) that is ``equivalent" in some sense to $\phi$
+\end{theorem}
+
+perhaps the right idea is to ``translate" (by induction on the complexity of the formula) each sentence into one in the language of rings \emph{using} the data defining the algebraic group. 
+
+Alternatively, one can literally read sentences in the language of groups as meaningful when talking about group objects in a category, provided you understand the ``elements" of the group to be ``generalized elements" in the category. So perhaps one simply proves that certain statements in the language of groups, when properly interpreted as sentences about generalized (perhaps $\Spec(k)$-shaped elements?), are equivalent to certain algebraic conditions in the language of rings just by appealing to the contravariant nature of algebraic geometry. idk
+
+Thus if we are given a definable set $M$ whose points parametrize algebraic groups, our transfer princple allows us to make first-order statements about \emph{all} of the algebraic group that are parametrized in this family. In particular, we can use the Lefschetz princple (and the related real closed/$p$-adically closed versions thereof) and the known structure of abelian varieties over $\bC$, $\bR$, and $\bQ_p$ to deduce results about abelian varieties over any algebraically closed field of characteristic zero, real closed field, or $p$-adically closed field. 
+
+To get some use out of this principle, we need to some parameter spaces to work with. The following result gives us the most general way of doing so:
+
+insert comprehensive family here!
