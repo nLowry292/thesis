@@ -7,6 +7,7 @@
 % \usepackage[margin = 1.25in]{geometry} %1.5in
 \usepackage{amsthm}
 \usepackage{amsmath}
+\usepackage{xr}
 \usepackage{amssymb}
 \usepackage[scr]{rsfso}
 % \usepackage{csquotes}
@@ -47,9 +48,9 @@
 % For acceptance and abstract page
 
 \committeechair{Michael Larsen, PhD}
-\readertwo{XXX}
-\readerthree{XXX}
-\readerfour{XXX} 
+\readertwo{Valery Lunts}
+\readerthree{Matthias Strauch}
+\readerfour{Larry Moss} 
 \defensedate{TBD} % Date of PhD defense
 
 % For Copyright Page
@@ -64,6 +65,7 @@
 \maketitle
 \acceptancepage
 
+
 % This page is optional
 %\copyrightpage
 
@@ -71,7 +73,7 @@
 % This page is optional but generally included
 
 \begin{acknowledgements}
-I find myself in the enviable position of being surrounded by the most supportive and loving group of people that has ever graced humankind. I would like to use this space to express my gratitude to a few of these people in particular:
+I find myself in the enviable position of being surrounded by a wonderfully supportive and loving group of friends and family. I would like to use this space to express my gratitude to a few of these people in particular:
 
 Michael Larsen, my advisor, for his support on this thesis, and for allowing me to draw from his well of patience and kindness which never runs dry;
 
@@ -81,7 +83,7 @@ Zachary Finn, for teaching me to have the courage of my convictions;
 
 Dylan Spence and A. Thomas Yerger, for their many stimulating conversations, mathematical and otherwise;
 
-David and Jamie Lowry, my parents, for their unending love and their continued encouragement in my academic career, which finally reaches its conclusion in this very thesis;
+David and Jamie Lowry, my parents, for their unending love and their continued encouragement in my academic career;
 
 Roberta Glotzbach, my grandmother, for whom the words to express my gratitude would overflow the bounds of this page;
 
@@ -103,7 +105,7 @@ and finally, Lauren Lykins and Theodore Lowry, my wife and my son, for whom ther
 % % This page is required
 
 \begin{abstract}
-      In this thesis, we determine, to as great an extent as possible, the group structure of the $K$-valued points of an abelian variety when $K$ is either a real closed field or a $p$-adically closed field. Using the known structure of abelian varieties over $\bR$ and $\bQ_p$, we employ model-theoretic transfer principles to pass this information to abelian varieties over $K$.\hspace{2cm}
+      In this thesis, we determine, to as great an extent as possible, the group structure of the $K$-valued points of an abelian variety defined over $K$ when $K$ is either a real closed field or a $p$-adically closed field. Using the known structure of abelian varieties over $\bR$ and $\bQ_p$, we employ a model-theoretic transfer principle to pass this information to abelian varieties over $K$.\hspace{2cm}
 \end{abstract}
 
 \newpage
@@ -115,7 +117,8 @@ and finally, Lauren Lykins and Theodore Lowry, my wife and my son, for whom ther
 \newpage
 
 \pagenumbering{arabic}
-
+\bibliographystyle{alpha}
+\bibliography{references}
 \input{intro}
 \input{AVreal.tex}
 \input{AVpadic.tex}
@@ -291,10 +294,6 @@ and finally, Lauren Lykins and Theodore Lowry, my wife and my son, for whom ther
 
 
 \addcontentsline{toc}{chapter}{Bibliography}
-
-\bibliographystyle{alpha}
-\bibliography{references}
-
 
 \newpage
 

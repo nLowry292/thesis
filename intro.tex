@@ -1,37 +1,96 @@
 \chapter{Introduction}
 
-Abelian varieties play an important role for both the algebraic and arithmetic geometer alike. Their rigid geometric structure simplifies the analytic questions one might ask, while their arithmetic structure allows one to employ to number-theoretic ideas. Elliptic curves provide the first and simplest examples of abelian varieties. The analytic theory of elliptic curves dates back largely to Abel and Jacobi, who, in giving a basis for the theory of elliptic functions, discovered higher dimensional abelian varieties known today as Jacobians. Soon after, Weierstrass discovered the $\wp$-function - an explicit, albeit highly transcendental, parametrization of elliptic curves. It is also around this time that Riemann introduces the idea of manifolds, giving a firm foundation to the theory of higher dimensional abelian varieties. To this end, he introduces the Riemann bilinear relations as well as theta functions. In 1869, Weierstrass uses Riemann's foundational work to prove that abelian functions satisfy certain algebraic relations, attracting attention from the algebraists. Kronecker uses this algebraic structure of abelian varieties to solve Hilbert's 12th problem for the case of imaginary quadratic fields and in 1922, Mordell proves that the group of $\bQ$-points on an elliptic curve is in fact finitely generated. In the 1940's, Weil gives the theory of abelian varieties its modern formulation and uses his new theory to greatly extend Mordell's result.
+Abelian varieties play an important role for the algebraic and arithmetic geometer alike. Their rigid geometric structure simplifies the analytic questions one might ask, while their arithmetic structure provides a fruitful link between geometry and number theory. Elliptic curves are the first and simplest examples of abelian varieties. The analytic theory of elliptic curves traces back to unpublished works of Gauss, but the first systematic studies are attributed to Abel and Jacobi, who, in giving a basis for the theory of elliptic functions, discovered higher-dimensional abelian varieties known today as Jacobians. Some 30 years later, Weierstrass discovered the $\wp$-function - an explicit, albeit highly transcendental, parametrization of elliptic curves. It is also around this time that Riemann introduced the idea of manifolds, giving a firm foundation to the theory of higher-dimensional abelian varieties; he introduced the Riemann bilinear relations as well as theta functions into the theory of abelian varieties. In 1869, Weierstrass used Riemann's foundational work to prove that abelian functions satisfy certain additional algebraic relations, attracting attention from the algebraists. Kronecker used this algebraic structure of elliptic curves to solve Hilbert's 12th problem for the case of imaginary quadratic fields and in 1922, Mordell proved that the group of $\bQ$-points on an elliptic curve is in fact finitely generated. In the 1928, Weil greatly extended Mordell's and in the 1940s, he gave the theory of abelian varieties its modern formulation. While Grothendieck's introduction of schemes in the early 1960s largely supplanted Weil's theory,  Weil's treatises remain highly relevant and highly readable to this day.
 
-In this thesis, we employ model-theoretic transfer principles to deduce arithmetic properties of abelian varieties over real closed and $p$-adically closed fields by appealing to the known structure of abelian varieties over $\bR$ and $\bQ_p$.
+In this thesis, we use real and $p$-adic analytic techniques to reveal the algebraic structure of abelian varieties over $\bR$ and $\bQ_p$. We employ a model-theoretic transfer principle to deduce arithmetic properties of abelian varieties over real closed and $p$-adically closed fields.
 
 \section{Abelian Varieties}
 \begin{definition}
  Let $k$ be a field. An abelian variety over $k$ is a proper and connected group variety. 
 \end{definition}
 
-NOTE: for purposes of this paper, all abelian varieties are positive-dimensional
+\begin{remark}
+For the remainder of this thesis, all abelian varieties are assumed to be positive-dimensional.
+\end{remark}
 
-While it may not look like it, these conditions are quite strong. In particular, they will imply that the group law is always commutative and that abelian varieties are projective.
+While it may not seem so obvious from the definition, the conditions required of an abelian variety are quite strong. In particular, they will imply that the group law is always commutative and that abelian varieties are projective.
 
 \begin{definition}
 A homomorphism $f:A\ra B$ of abelian varieties is called an \emph{isogeny} if $f$ is surjective with finite kernel. The degree of an isogeny is the order of the kernel (as a group scheme).
 \end{definition}
 
-As abelian varieties are group schemes, there is a multiplication by $n$ map $[n]:A\ra A$ for each $n\in\bZ$. We denote the kernel of this map by $A[n]$ (remember that this is a group scheme and we identify $A[n]$ with it's $\bar{k}$-points). The most important basic result for us is the following:
+As abelian varieties are commutative group schemes, they come with a multiplication-by-$n$ map $[n]:A\ra A$ for each $n\in\bZ$. We denote the kernel of this map by $A[n]$ and we frequently identify $A[n]$ with its $\bar{k}$-points. The most important basic result for us is the following, whose proof we delay until Proposition \ref{torsion-alg-closed-lefschetz}:
 
 \begin{proposition}
-\label{torsion-algebraically-closed}
-Suppose $\text{char}(k)\nmid n$. Then the degree of $[n]:A\ra A$ is $n^{2g}$, where $g=\dim A$. In particular, if $k$ is characteristic zero, we have $A(\bar{k})[\tors]\cong (\bQ/\bZ)^{2g}$.
+\label{torsion-alg-closed}
+The degree of $[n]:A\ra A$ is $n^{2g}$, where $g=\dim A$. In particular, if $k$ is of characteristic zero, then $A[n](\bar{k})\isom (\bZ/n\bZ)^{2g}$ and $A(\bar{k})[\tors]\cong (\bQ/\bZ)^{2g}$.
+\end{proposition}
+%\begin{proof}
+%We first recall two facts. First, if $X$ and $Y$ are proper varieties of the same dimension and $f:X\ra Y$ is surjective, then $f^*$ induces a finite extension $k(X)/k(Y)$ of degree $d$. Now if $D_1,\dots, D_n$ are Cartier divisors on $Y$, we find the following relation between intersection numbers: $$(f^*D_1,\dots, f^*D_n)_X=d(D_1,\dots, D_n)_Y.$$ Second, if $X$ is an abelian variety and $\mathcal{L}$ is a line bundle on $X$, then $[n]^*\mathcal{L}\cong \mathcal{L}^{\frac{n^2+n}{2}}\otimes [-1]^*\mathcal{L}^{\frac{n^2-n}{2}}$. This follows from the so-called ``theorem of the cube". 
+%
+%Now let $D$ be an ample, symmetric divisor on $A$; such a divisor exists because there is an ample line bundle $\mathcal{L}$ over $A$, since $A$ is projective, and $\mathcal{L}\otimes [-1]^*\mathcal{L}$ will be ample and symmetric). By the second fact, we have that $[n]^*D\sim n^2 D$ and by the first fact we find that $\text{deg}([n])=n^{2g}$ (intersect $[n]^*D$ with itself $g$-times). That $A(\bar{k})[\tors]$ is of the given form is an easy exercise in group theory.
+%\end{proof}
+
+If $A$ is an abelian variety defined over $k$, then the multiplication map and therefore the multiplication-by-$n$ maps are all defined over $k$. Thus, the Galois group $G:=\Gal(\bar{k}/k)$ acts on each $A[n]$, and we get a Galois representation $G\ra GL_{2g}(\bZ/n\bZ)$. Representation theory is significantly easier in characteristic zero, so we are lead to consider instead the \emph{Tate module} $T_l(A):=\varprojlim A[l^n]\cong \bZ_l^{2g}$ with transition maps given by $[l]:A[l^{n+1}]\ra A[l^n]$, where $l$ is a prime different from the characteristic of $k$. Since the multiplication-by-$l$ map is Galois-equivariant, $T_l(A)$ comes equipped with a natural Galois action and we get a representation $G\ra GL_{2g}(\bZ_l)$.  \emph{Many} interesting properties of abelian varieties can be extracted by a careful analysis of this Galois representation. As just one example, consider the celebrated theorem of Faltings: two elliptic curves $E_1$ and $E_2$ over a number field $K$ are $K$-isogenous if and only if their $l$-adic Tate modules $T_l(E_1)$ and $T_l(E_2)$ are isomorphic as $\Gal(\bar{K}/K)$-modules.
+
+Associated to an abelian variety $A/k$ is a \emph{dual abelian variety} $A^{\vee}/k$, sometimes denoted $\Pic^0(A)/k$: it is the identity component of the group scheme representing moduli of line bundles on $A$. As such, the dual abelian variety comes with a line bundle $\mathcal{P}$ on $A\times A^{\vee}$ called the \emph{Poincar\'e bundle}. As one might expect given the name of \emph{dual} abelian variety, there is a natural isomorphism of abelian varieties $\iota_A:A\simeq A^{\vee\vee}$; moreover, associated to each homomorphism (resp. isogeny) $f:A\ra B$ of abelian varieties, there is a corresponding dual homomorphism (resp. dual isogeny) $f^{\vee}:B^{\vee}\ra A^{\vee}$.
+
+\begin{definition}
+A polarization of an abelian variety $A/k$ is an isogeny $\lambda:A\ra A^{\vee}$ satisfying the following two conditions:
+\begin{enumerate}
+	\item $\lambda$ is \emph{symmetric} in the sense that $\lambda^{\vee}\circ \iota_A = \lambda$
+	\item The line bundle $$\Delta^*(\id\times \lambda)^*\mathcal{P}=(\id,\lambda)^*\mathcal{P},$$
+	on $A$ is ample, where $\Delta:A\ra A\times A$ is the diagonal morphism and $\mathcal{P}\in\Pic(A\times A^{\vee})$ is the Poincar\'e bundle.
+\end{enumerate} 
+The \emph{degree} of a polarization is its degree as an isogeny. A \emph{polarized abelian variety} is a pair $(A,\lambda)$, where $\lambda$ is a polarization of the abelian variety $A$. If $\lambda$ has degree 1, then $(A,\lambda)$ is said to be \emph{principally polarized}.
+\end{definition}
+
+It is known that every abelian variety $A/k$ admits a polarization over $k$. This will be important for us, as one can show that \emph{polarized} abelian varieties $(A,\lambda)$ have finite automorphism groups, making them particularly well-suited to the formation of well-behaved moduli problems (see \cite{mumfordAV}[Theorem 5, pg. 207]).
+
+As abelian varieties are projective, one such moduli problem that will be of particular importance for us is the classification of closed subschemes of projective space. Consider the functor $\Sch^{op}\ra \Set$ from the category of locally noetherian schemes to sets given by $$\Hilbit(n)(T)=\{Y\subset \mathbb{P}^n_T: Y\text { is closed and flat over } T\}.$$ In \cite{FGAHilbert}, Grothendieck proved that this functor is representable by a scheme $\Hilb(n)$ in the sense that the set of $T$-valued points $\Hom(T,\Hilb(n))$ is naturally identified with $\Hilbit(n)(T)$. Moreover, he proved that $\Hilb(n)$ naturally decomposes into a disjoint union of schemes $\Hilb(n,\Phi)$, where $\Phi$ ranges over the set of rational polynomials. The scheme $\Hilb(n,\Phi)$ represents the functor that classifies closed subschemes $Y$ of $\bP^n_T$, flat over $T$, with Hilbert polynomial $\Phi$. Furthermore, he proved that each $\Hilb(n,\Phi)$ is in fact projective over $\Spec(\bZ)$. The main technical result of this thesis, Lemma \ref{comprehensive-family}, amounts to excising precisely the abelian varieties from the family of closed subschemes parametrized by $\Hilb(n,\Phi)$.
+
+Crucially, one can also discuss abelian \emph{schemes}, which are families of abelian varieties defined over some base scheme of parameters. 
+
+\begin{definition}
+A abelian scheme $\mathcal{A}/S$ (of relative dimension $g$) is a proper, smooth, group scheme over $S$ whose geometric fibers are are connected (and of dimension $g$).
+\end{definition}
+
+These conditions of course imply that the fiber of $S$ over any field-valued point is an abelian variety (of dimension $g$).
+
+(NOTE: the template for this document I was given uses this fancy "example" set-up. Should I change it back to the default?)
+\begin{example}
+An important example to which we frequently return is the family of elliptic curves $\mathcal{E}/S$ over the base $S=\Spec(\bZ[a,b][1/(4a^3+27b^2)])$ and where $\mathcal{E}$ is the closed subscheme of $\bP^2\times S$ cut out by $Y^2Z=X^3+aXZ^2+bZ^3$. If $k$ is a field, then  giving a $k$-point $s:\Spec(k)\ra S$ is equivalent to specifying two points $a,b\in k$ satisfying $4a^3+27b^2\neq 0$. The fiber $\mathcal{E}_s/k$ is (isomorphic to) the elliptic curve $E/k$ given in Weierstrass form by $y^2=x^3+ax+b$. This family of elliptic curves is \emph{comprehensive} in the sense that it contains \emph{all} elliptic curves defined over fields of characteristic zero: for every field $k$ of characteristic zero and every elliptic curve $E/k$, there is a $k$-point $s:\Spec(k)\ra S$ such that $E/k$ is isomorphic (as an elliptic curve over $k$) to $\mathcal{E}_s/k$.
+\end{example}
+
+\section{Abelian Varieties over $\bC$}
+
+Abelian varieties were first discovered by means of their intimate connection with abelian functions, which are meromorphic functions satisfying a certain number of periodicity conditions. One can learn a great deal of information about abelian functions by studying differential forms on complex algebraic curves. Associated to any curve $C$ of genus $g$ is an abelian variety $J$ of dimension $g$ called the \emph{Jacobian} of $C$. The rigid structure of the Jacobian variety greatly simplifies the study of differential forms on $C$.
+
+The original impetus for studying elliptic curves came from a detailed analysis of so-called ``elliptic functions" --- meromorphic functions $f$ that are ``doubly periodic" in the sense that there are real-linearly independent complex numbers $\omega_1$ and $\omega_2$ so that $f(z)=f(z+a\omega_1+b\omega_2)$ for all $z\in \bC$ and $a,b\in\bZ$. Some elementary complex analysis will show us that any such non-constant $f$ must have at least 2 poles in the fundamental domain $D=\{a\omega_1+b\omega_2: 0\leq a,b< 1\}$: that $f$ is holomorphic is ruled out by Liouville's Theorem, as $f$ is completely determined by its valued on the compact set $\bar{D}$; that $f$ has a single simple pole is ruled out by a simple application of the residue theorem, where the periodicity of $f$ guarantees that the sum of the residues in the fundamental domain must be 0. With this in mind, it is natural to consider the function $$\sum\limits_{\lambda\in \Lambda} \frac{1}{(z-\lambda)^2}.$$ Alas! This sum does not converge. With a small modification, we arrive at the Weierstrass $\wp$-function: $$\wp(z;\Lambda) = \frac{1}{z^2} + \sum\limits_{\lambda\in\Lambda\setminus\{0\}} \frac{1}{(z-\lambda)^2}-\frac{1}{\lambda^2}.$$ 
+
+As a historical aside, the fancy script letter $\wp$ was chosen to designate this function by its inventor Weierstrass and has been retained by posterity. This symbol is used almost exclusively in reference to this function, although it is used somewhat perversely on Wikipedia to refer to the powerset.
+
+One can check manually that both $\wp$ and its derivative $\wp'$ are doubly periodic with respect to the lattice $\Lambda$. In fact, one can even prove that $\bC(\Lambda)=\bC(\wp,\wp')$, i.e. \emph{every} elliptic function with respect to $\Lambda$ is a rational function in $\wp$ and $\wp'$. Moreover, one can prove that $\wp$ satisfies the differential equation $(y')^2 = 4y^3-g_2y-g_3$, where $g_2$ and $g_3$ are constants depending on $\Lambda$. In other words, the $\wp$-function and its derivative $\wp'$ parametrizes an elliptic curve! Amazingly enough, \emph{every} elliptic curve can be parametrized in such a way:
+
+\begin{theorem}
+\label{uniformization}
+Let $E/\bC$ be an elliptic curve. Then there is a lattice $\Lambda\subset \bC$ so that $\phi:\bC/\Lambda\ra E(\bC)$ defined by $\phi(z+\Lambda)=[\wp(z;\Lambda):\wp'(z;\Lambda):1]$ and $\phi(\Lambda) = [0:1:0]$ is an isomorphism of complex analytic Lie groups.
+\end{theorem}
+
+One might describe the correspondence between elliptic curves and elliptic functions thus: an elliptic function is a meromorphic function on some complex elliptic curve $\bC/\Lambda$, regarded as a $\Lambda$-periodic meromorphic function on $\bC$.
+
+The obvious next step is to consider the so-called ``abelian functions" --- meromorphic functions of $n$ complex variables with $2n$ real-independent periods. Naturally, it was found that an abelian function is a meromorphic function on some complex abelian variety!
+
+However, as is often the case in mathematics, the story is much more complicated in higher dimensions. As one might expect from the case of elliptic curves, an abelian variety $A/\bC$ is still a complex torus, i.e. there is a lattice $\Lambda\subset \bC^g$ so that $A(\bC)\isom \bC^g/\Lambda$ as complex Lie groups. However, not all complex tori are made equally --- there are non-trivial conditions on the lattice $\Lambda$ that must be satisfied in order for $\bC^g/\Lambda$ to be an abelian variety. Without going into too much detail, one proves that in order for a complex torus to be an abelian variety, it is necessary and sufficient that there be a non-degenerate Hermetian form on $\bC^g$ whose imaginary part is integer-valued on $\Lambda$. Such a form is called a \emph{Riemann form} for $T=\bC^g/\Lambda$. One can use this Riemann form to construct \emph{theta functions}, which play the role of the Weierstrass $\wp$-function. A polarization of an abelian variety $A/\bC$ is the choice of such a Riemann form.
+
+In any case, the description of abelian varieties as complex tori affords us an easy proof of Proposition \ref{torsion-alg-closed} in the case $k=\bC$:
+\begin{proposition}
+\label{torsion-C}
+Let $A/\bC$ be an abelian variety of dimension $g$. Then $A[\tors]\isom (\bQ/\bZ)^{2g}$.
 \end{proposition}
 \begin{proof}
-We first recall two facts. First, if $X$ and $Y$ are proper varieties of the same dimension and $f:X\ra Y$ is surjective, then $f^*$ induces a finite extension $k(X)/k(Y)$ of degree $d$. Now if $D_1,\dots, D_n$ are Cartier divisors on $Y$, we find the following relation between intersection numbers: $$(f^*D_1,\dots, f^*D_n)_X=d(D_1,\dots, D_n)_Y.$$ Second, if $X$ is an abelian variety and $\mathcal{L}$ is a line bundle on $X$, then $[n]^*\mathcal{L}\cong \mathcal{L}^{\frac{n^2+n}{2}}\otimes [-1]^*\mathcal{L}^{\frac{n^2-n}{2}}$. This follows from the so-called ``theorem of the cube". 
-
-Now let $D$ be an ample, symmetric divisor on $A$; such a divisor exists because there is an ample line bundle $\mathcal{L}$ over $A$, since $A$ is projective, and $\mathcal{L}\otimes [-1]^*\mathcal{L}$ will be ample and symmetric). By the second fact, we have that $[n]^*D\sim n^2 D$ and by the first fact we find that $\text{deg}([n])=n^{2g}$ (intersect $[n]^*D$ with itself $g$-times). That $A(\bar{k})[\tors]$ is of the given form is an easy exercise in group theory.
+By the uniformization theorem, $A(\bC)\isom \bC^g/\Lambda$ for some lattice $\Lambda\subset \bC^g$. If $\Lambda = \oplus_{i=1}^{2g}\bZ\cdot \tau_i$, then we see by inspection that the points of order $n$ in $\bC^g/\Lambda$ are (the images of) the points $\sum_{i=1}^{2g}a_i\tau_i/n$ with $0\leq a_i <n$. Thus, there are a total of $n^{2g}$ points of order $n$. That $A[n](\bC)\isom (\bZ/n\bZ)^{2g}$ and that therefore $A[\tors]\isom (\bQ/\bZ)^{2g}$ follow from purely group-theoretic considerations.
 \end{proof}
-
-If $A$ is defined over $k$, the Galois group $G:=\Gal(\bar{k}/k)$ acts on each $A(\bar{k})[n]$, so we get a Galois representation $G\ra GL_{2g}(\bZ/n\bZ)$. Representation theory is significantly easier in characteristic zero, so we are lead to consider instead the inverse limit $T_l(A):=\injlim A[l^n]\cong \bZ_l^{2g}$ given by $[l]:A[l^{n+1}]\ra A[l^n]$, where $l$ is a prime. Since the multiplication-by-$l$ map is Galois-equivariant, $T_l(A)$ comes equipped with a natural Galois action and we get a representation $G\ra GL_{2g}(\bZ_l)$. The arithmetic properties of abelian varieties are largely controlled by this system of Galois representations.
-
-One can also discuss abelian \emph{schemes}, which are like families of abelian varieties defined over some base of parameters. An important example of such a scheme is  $\mathcal{E}\ra \Spec(\bZ[a,b][1/(4a^3+27b^2)])=S$, where $\mathcal{E}$ is the closed subscheme of $\bP^2\times S$ cut out by $Y^2Z=X^3+aXZ^2+bZ^3$.
 
 \section{Abelian Varieties over $\bQ$}
 The most fundamental result for abelian varieties over $\bQ$ (or more generally over number fields) is the celebrated theorem of Mordell and Weil:
@@ -39,30 +98,8 @@ The most fundamental result for abelian varieties over $\bQ$ (or more generally 
 \label{mordell-weil}
 Let $K$ be a number field and $A/K$ an abelian variety. Then $A(K)$ is a finitely generated abelian group.
 \end{theorem}
-\begin{proof}
-sketch (perhaps unnecessary): heights + $A/2A$ is finite (using galois cohomology)
-\end{proof}
 
-Given an abelian variety $A$ defined over a number field $K$, the theorem tells us we have $A(K)\isom \bZ^r \oplus T$, where $T$ is the torsion subgroup. The determination of the rank $r$ and the structure of the torsion subgroup $T$ remain active areas of research.
-
-\section{Abelian Varieties over $\bC$}
-
-Abelian varieties were first discovered by means of their intimate connection with abelian functions, which are meromorphic functions satisfying a certain number of periodicity conditions. One can learn a great deal of information about abelian functions by studying differential forms on complex algebraic curves. Associated to any curve $C$ of genus $g$ is an abelian variety $J$ of dimension $g$ called the \emph{Jacobian} of $C$. The group structure of the Jacobian variety greatly simplifies the study of differential forms on $C$.
-
-The original impetus for studying elliptic curves came from a detailed analysis of so-called ``elliptic functions" --- meromorphic functions $f$ that are ``doubly periodic" in the sense that there are real-linearly independent complex numbers $\omega_1$ and $\omega_2$ so that $f(z)=f(z+a\omega_1+b\omega_2)$ for all $z\in \bC$ and $a,b\in\bZ$. Some elementary complex analysis will show us that any such $f$ must have a pole of order at least 2 at each point in $\Lambda:=\bZ\omega_1\oplus \bZ\omega_2$. With this in mind, Weierstrass discovered the $\wp$-function: $$\wp(z;\omega_1,\omega_2) = \frac{1}{z^2} + \sum\limits_{\lambda\in\Lambda\setminus\{0\}} \frac{1}{(z-\lambda)^2}-\frac{1}{\lambda^2}$$
-
-One can check manually that both $\wp$ and its derivative $\wp'$ are doubly periodic with respect to the lattice $\Lambda$. In fact, one can even prove that $\bC(\Lambda)=\bC(\wp,\wp')$, i.e. \emph{every} elliptic function with respect to $\Lambda$ is a rational function in $\wp$ and $\wp'$. Moreover, one can prove that $\wp$ satisfies the differential equation $(y')^2 = 4y^3-g_2y-g_3$, where $g_2$ and $g_3$ are constants depending on $\Lambda$. In other words, the $\wp$-function parametrizes an elliptic curve! Amazingly enough, \emph{every} elliptic curve can be parametrized in such a way:
-
-\begin{theorem}
-\label{uniformization}
-Let $E/\bC$ be an elliptic curve. Then there is a lattice $\Lambda\subset \bC$ so that $\phi:\bC/\Lambda\ra E(\bC)$ defined by $\phi(z+\Lambda)=[\wp(z;\Lambda):\wp'(z;\Lambda):1]$ and $\phi(\Lambda) = [0:1:0]$ is an isomorphism of complex analytic Lie groups.
-\end{theorem}
-
-One might describe the correspondence between elliptic curves and elliptic functions thus: elliptic curves are the universal domains of elliptic functions (perhaps there's a better way to summarize it? also ``universal domain" has a precise meaning that has nothing to do with this, so perhaps another choice of words is in order)
-
-The obvious next step is to consider \emph{abelian functions} --- meromorphic functions of $n$ complex variables with $2n$ real-independent periods. Naturally, it was found that abelian varieties are the universal domains of abelian functions!
-
-However, as is often the case in mathematics, the story is much more complicated in higher dimensions. As one might expect from the case of elliptic curves, an abelian variety $A/\bC$ is still a complex torus, i.e. there is a lattice $\Lambda\subset \bC^g$ so that $A(\bC)\isom \bC^g/\Lambda$. However, not every complex torus will be an abelian variety; there are non-trivial conditions on the lattice $\Lambda$ that must be satisfied. Without going into too much detail, one proves that in order for a complex torus to be an abelian variety, it is necessary and sufficient that there be a non-degenerate Hermetian form on $\bC^g$ whose imaginary part is integer-valued on $\Lambda$. Such a form is called a \emph{Riemann form} for $T=\bC^g/\Lambda$. One can use this Riemann form to construct \emph{theta functions}, which play the role of the Weierstrass $\wp$-function.
+Given an abelian variety $A$ defined over a number field $K$, the theorem tells us we have $A(K)\isom \bZ^r \oplus T$, where $T$ is the finite torsion subgroup. The determination of the rank $r$ and the structure of the torsion subgroup $T$ remain active areas of research.
 
 \section{Abelian varieties over other fields}
 
@@ -75,22 +112,25 @@ There is an extension of the Mordell-Weil Theorem due to N\'eron:
 Let $K$ be a field which is finitely generated over its prime field and let $A/K$ be an abelian variety. Then $A(K)$ is a finitely generated abelian group.
 \end{theorem}
 
-On the other end of the spectrum, Mumford proved that if $k$ is algebraically closed, then $A(k)$ is a divisible group. In particular, if $k$ is characteristic zero, then $A(k)[\tors]$ itself is divisible (by prop \ref{torsion-algebraically-closed}) (and this is probably true regardless of characterstic); an old theorem of Baer tells us that $A(k)$ is torsion split, i.e. $A(k)\isom V\oplus A(k)[\tors]$. $V$ is torsion-free and \emph{uniquely} divisible, so in fact $V$ is a $\bQ$-vector space; the dimension of this $\bQ$-vector space was calculated by Frey and Jarden:
+On the other end of the spectrum, if $k$ is algebraically closed, then $A(k)$ is a divisible group. In particular $A(k)[\tors]$ is divisible; a theorem of Baer \cite{baer} tells us that $A(k)$ is thus torsion split, i.e. $A(k)\isom V\oplus A(k)[\tors]$. $V$ is torsion-free and \emph{uniquely} divisible, so in fact $V$ is a $\bQ$-vector space; the dimension of this $\bQ$-vector space was calculated by Frey and Jarden in \cite{frey-jarden}:
 
 \begin{theorem}
 \label{frey-jarden}
-Let $K$ be an algebraically closed field which is not the algebraic closure of a finite field and let $A/K$ be an abelian variety. Then the rank of $A(K)$ is equal to the cardinality of $K$.
+Let $K$ be an algebraically closed field which is not the algebraic closure of a finite field and let $A/K$ be an abelian variety. Then the rank of $A(K)$, $\dim_{\bQ} A(K)\otimes \bQ$, is equal to the cardinality of $K$.
 \end{theorem}
 
-In particular, we come to the exact opposite conclusion of the Mordell-Weil theorem: the rank of $A(k)$ is always infinite when $k$ is algebraically closed (and not equal to $\bar{\bF_p}$. This leads us to the following definition:
+Note that we exclude the case $K=\bar{F_q}$, as in this case $A(K)$ is a torsion group, so $A(K)\otimes \bQ=0$.
+
+In particular, we come to the exact opposite conclusion of the Mordell-Weil theorem: the rank of $A(k)$ is always infinite when $k$ is algebraically closed (and not equal to $\bar{\bF_q}$). This leads us to the following definition:
 
 \begin{definition}
 A field $K$ is called \emph{anti-Mordell-Weil} (or simply \emph{AMW}) if for every abelian variety $A/K$ (remember our convention about abelian varieties being positive-dimensional), the group $A(K)$ has infinite rank.
 \end{definition}
 
-So we have seen that algebraically closed fields of characteristic zero are AMW. 
+We have just seen that algebraically closed fields of characteristic zero are AMW; $\bR$ and $\bQ_p$ will turn out to be AMW. In fact, a field will be AMW if it is ``large" in the following sense:
 
 \begin{definition}
+\label{ample}
 A field $F$ is called \emph{ample} (or \emph{large}) if for every smooth $F$-curve $C$, either $C(F)=\emptyset$ or $C(F)$ is infinite.
 \end{definition}
 
@@ -101,31 +141,236 @@ We have the following recent theorem of Fehm and Petersen:
 Let $F$ be an ample field that is not algebraic over a finite field. Then $F$ is AMW.
 \end{theorem}
 
-It is easy enough to verify that both real closed and $p$-adically closed fields are ample and therefore AMW.
+\section{The Lefschetz Principle}
+It is quite common to reduce questions about algebraic geometry over an arbitrary algebraically closed field of characteristic zero to questions about algebraic geometry over $\bC$ by appealing to the \emph{Lefschetz princple}, which states, roughly, that algebraically geometry over algebraically closed fields of characteristic zero is ``the same" as algebraic geometry over $\bC$. The idea is that statements about varieties and morphisms are, at bottom, statements that demonstrate solutions to certain systems of polynomial equations; that the varieties and morphisms themselves can be defined over a finitely generated extension of $\bQ$; and that any such field can be embedded into $\bC$. Weil summarizes this point excellently in his foundational work \cite{weil1946foundations}: ``S. Lefschetz has observed on various occasions, whenever a result, involving only a finite number of points and varieties, can be proved in the `classical case' where the universal domain is the field of all complex numbers, it remains true whenever the characteristic is 0; there is but one geometry of characteristic 0, to which the methods of the theory of analytic functions and of topology, analytic continuation, theta functions, the homology theory, etc., may legitimately be applied." To illustrate the technique, we will prove Proposition \ref{torsion-alg-closed}:
+
+\begin{proposition}
+\label{torsion-alg-closed-lefschetz}
+Let $k$ be an algebraically closed field of characteristic zero and let $A/k$ be an abelian variety of dimension $g$. Then $A(k)[\tors]\cong (\bQ/\bZ)^{2g}$.
+\end{proposition}
+\begin{proof}
+The data defining the abelian variety $A/k$ (i.e. the variety itself, the multiplication map, the inverse map, and the identity section) are all defined over a field $L$ which is finitely generated over $\bQ$. Any \emph{countably} generated extension of $\bQ$ can be embedded into $\bC$, so we can embed $L\subset\bar{L}\
+\ra \bC$. Note that if $P\in A(k)$ is a point of order $n$, then in fact $P\in A(\bar{L})$. Now for each $n$, we have $A(k)[n]=A(\bar{L})[n]=A(\bC)[n]\isom (\bZ/n\bZ)^{2g}$ by Proposition \ref{torsion-C}. That $A(k)[\tors]\isom (\bQ/\bZ)^{2g}$ follows as before from purely group-theoretic considerations.
+\end{proof}
+
+There are many variants of the Lefschetz principle which can actually be ``proven" in a metamathematical sense (see \cite{barwise1969lefschetz}, for instance), but perhaps the simplest and most elegant is the following, due to Tarski \cite{tarski1951decision}: Let $k$ be an algebraically closed field of characteristic zero, and let $\phi$ be a first-order sentence in the language of rings $\mathcal{L}_r=\{0,1,+,-,\cdot\}$. Then $\phi$ holds in $\bC$ if and only if $\phi$ holds in $k$. In other words, this version of the Lefschetz principle states that the theory of algebraically closed fields is \emph{model complete}. One possible interpretation of the Lefschetz principle as stated by Weil is that the content of many theorems in algebraic geometry over an algebraically closed field $k$ of characteristic zero are reducible to some statements about $k$ itself in the language of rings where Tarski's version of the Lefschetz principle kicks in. But clearly not \emph{every} statement about algebraic geometry can be captured in this way: take, for instance, the statement that for every positive-dimensional variety $V/\bC$, the cardinality of $V(\bC)$ is equal to that of $\bC$. In general, it can often be difficult to decide whether the Lefschetz principle (in the interpretation above) is really a valid method of proof. For instance, does the Lefschetz principle handle Proposition \ref{torsion-alg-closed-lefschetz} above? Given an abelian variety $A/\bC$ of dimension $g$, it certainly seems \emph{plausible} that the claim ``$A(\bC)$ has exactly $n^{2g}$ points of order $n$" is equivalent to the existence of exactly $n^{2g}$ solutions to some system of polynomial equations with coefficients depending on $A$, but to actually justify such an equivalence is not so easy.
+
+The impetus for this thesis is to give a formal justification for the use of the Lefschetz principle (interpreted as above), at least for the case of group-theoretic statements about the rational points of abelian varieties. Our technique is general enough to apply not only to algebraically closed fields of characteristic zero, but to any theory extending the theory of fields which is \emph{model complete} (e.g. real closed and $p$-adically closed fields). The key idea is that of an \emph{interpretation} of one structure in another.\footnote{The author would like to thank to Alex Kruckman for providing some helpful remarks on interpretation of structures}. This will require a brief detour in model theory.
+
 
 \section{Model Theory}
-It is quite common to reduce questions about algebraic varieties over an arbitrary algebraically closed field of characteristic zero to questions about algebraic varieties over $\bC$ by appealing to the \emph{Lefschetz princple}: if $\phi$ is a first-order statement in the language of rings and $k$ is an algebraically closed field of characteristic zero, then $\phi$ is holds in $k$ if and only if $\phi$ holds in $\bC$. The basic idea is that statements about varieties and morphisms are intrinsically statements about solving certain systems of polynomial equations, that the varieties and morphisms themselves can be defined over a finitely generated extension of $\bQ$, and any such field can be embedded into $\bC$. For instance, one can prove 
+Model theory is, in short, the mathematical study of the relationship between \emph{syntax} and \emph{semantics}, i.e. between language and meaning. Formal systems of language and theory are studied via their models, which are the structures which give meaning (and importantly, \emph{truth}) to the formal symbols of language. Model theory is quite a recent development in mathematics. Its philosophical roots can be traced back to late nineteenth- and early twentieth-century works of Frege and Russel, but it was Tarski who developed model theory as a mathematical discipline in its own right in the 1950s.
+
+The relationship between syntax and semantics is no stranger to the algebraic geometer. The fundamental duality of algebraic geometry is one of this nature: polynomial equations (syntax) and the corresponding set of solutions (semantics). One should not be surprised to then learn of the many varied applications of model-theoretic ideas to mainstream algebraic geometry: look no further than this very paper! See also the recent and celebrated proof of the Andr\'e-Oort conjecture \cite{pila2022canonical}.
+
+Let us begin with a definition:
+
+\begin{definition}
+A first-order language $\mathcal{L}$ is specified by the following data:
+\begin{itemize}
+	\item a set of function symbols $\mathcal{F}$ and for each $f\in \mathcal{F}$ a non-negative integer $n_f$.
+	\item a set of relation symbols $\mathcal{R}$ and for each $R\in \mathcal{R}$ a non-negative integer $n_R$.
+	\item a set of constant symbols $\mathcal{C}$.
+\end{itemize}
+The number $n_f$ (called the \emph{arity} of $f$) represents that $f$ is a function of $n$ variables. Similarly, the number $n_R$ represents that $R$ is an $n_R$-ary relation.
+\end{definition}
+
+\begin{example}
+	\begin{enumerate}
+		\item The language of groups $\mathcal{L}_g=\{\cdot, e\}$ consists of a binary function $\cdot$ and a constant symbol $e$.
+		\item The language of rings $\mathcal{L}_r=\{+,-,\cdot, 0,1\}$ consists of the binary functions $+$ and $\cdot$, the unary function $-$, and the constant symbols $0$ and $1$. 
+		\item The language of ordered rings $\mathcal{L}_{or} = \{+,-,\cdot,<,0,1\}$ appends to the language of rings a binary relation $<$.
+		\item The language of valued fields $\mathcal{L}_{div}=\{+,-,\cdot,\mid, 0,1\}$ appends to the language of rings a binary relation $\mid$.
+	\end{enumerate}
+\end{example}
+
+To give \emph{meaning} to the symbols in $\mathcal{L}$ is to give a so-called ``$\mathcal{L}$-structure":
+
+\begin{definition}
+An $\mathcal{L}$-structure $\mathcal{M}$ is specified by the following data:
+\begin{itemize}
+	\item A set $M$, called the \emph{domain} of $\mathcal{M}$
+	\item a function $f^{\mathcal{M}}:M^{n_f}\ra M$ for each function symbol $f\in\mathcal{F}$ of arity $n_f$
+	\item a relation $R^{\mathcal{M}}\subset M^{n_R}$ for each relation symbol $R\in\mathcal{R}$ of arity $n_R$.
+	\item an element $c^{\mathcal{M}}\in M$ for each constant symbol $c\in\mathcal{C}$.
+\end{itemize}
+$f^{\mathcal{M}}$, $R^{\mathcal{M}}$, and $c^{\mathcal{M}}$ are called \emph{interpretations} of the symbols $f, R$, and $c$ in $M$. The Roman letters $A,B,C,\dots,$ always refer to the underlying universe of the $\mathcal{L}$-structure $\mathcal{A},\mathcal{B},\mathcal{C},\dots,$.
+\end{definition}
+
+\begin{example}
+	\begin{itemize}
+		\item Any group is an $\mathcal{L}_g$-structure, with the symbols interpreted in the obvious ways.
+		\item Any ring, or even a field, is an $\mathcal{L}_r$-structure.
+		\item The presence of extra structure in the previous examples is somewhat misleading. For instance, the natural numbers $\bN$ with the binary operation $n\cdot m = n^{3m}+20$ and distinguished element $e=21421$ is a perfectly valid $\mathcal{L}_g$-structure.
+	\end{itemize}
+\end{example}
+
+Of course, one can speak of a homomorphism of $\mathcal{L}$-structures:
+
+\begin{definition}
+A homomorphism $\phi:\mathcal{M}\ra \mathcal{N}$ of $\mathcal{L}$-structures is a function $\phi:M\ra N$ that ``preserves interpretations" in the following sense:
+\begin{enumerate}
+	\item for every $n$-ary function symbol $f\in\mathcal{F}$, we have $\phi(f^{\mathcal{M}}(a_1,\dots, a_n))=f^{\mathcal{N}}(\phi(a_1),\dots, \phi(a_n))$ for all $a_1,\dots, a_n\in M$.
+	\item for every $n$-ary relation symbol $R\in\mathcal{R}$, we have $(a_1,\dots, a_n)\in R^{\mathcal{M}}$ only if $(\phi(a_1),\dots, \phi(a_n))\in R^{\mathcal{N}}$.
+	\item for every constant symbol $c\in\mathcal{C}$, we have $\phi(c^{\mathcal{M}})=c^{\mathcal{N}}$
+\end{enumerate}
+If, furthermore, for every $n$-ary relation symbol $R\in\mathcal{R}$, we have $(a_1,\dots, a_n)\in R^{\mathcal{M}}$ \emph{if and only if} $(\phi(a_1),\dots, \phi(a_n))\in R^{\mathcal{N}}$, then we say $\phi$ \emph{reflects} $\mathcal{R}$. An injective homomorphism $\phi$ which reflects $\mathcal{R}$ is called an \emph{embedding}; a surjective embedding is called an \emph{isomorphism}.
+\end{definition}
+
+We can use the language $\mathcal{L}$ together with logic symbols (variables $x_1,x_2,x_3,\dots$, equality $=$, Boolean connectives $\top, \bot, \wedge, \vee, \neg, \implies, \iff$, existential and universal quantifiers $\forall$ and $\exists$,, and parentheses) to create \emph{formulas} that describe certain properties of $\mathcal{L}$-structures. For example, an abelian group $A$ is an $\mathcal{L}_g$-structure for which the (interpretation of the) formula $\forall x \forall y( x\cdot y = y\cdot x)$ is true. We proceed by formalizing the intuitive notion of a formula:
+
+\begin{definition}
+The set of $\mathcal{L}$-terms is the smallest set $\mathcal{T}$ such that 
+\begin{enumerate}
+	\item $c\in \mathcal{T}$ for each constant symbol $c\in\mathcal{C}$
+	\item $x_i\in \mathcal{T}$ for each variable $x_i$, $i=1,2,3,\dots$
+	\item if $t_1,\dots, t_n\in\mathcal{T}$ and $f\in\mathcal{F}$ is an $n$-ary function symbol, then $f(t_1,\dots, t_n)\in\mathcal{T}$
+\end{enumerate} 
+\end{definition}
+
+This definition is recursive, giving us a method for proving a statement about all terms: prove the statement for each variable and constant symbol, and in the inductive step, assume it holds true for terms $t_1,\dots, t_n$, then prove it holds for $f(t_1,\dots, t_n)$.
+
+Given a term and an $\mathcal{L}$-structure, there is a natural way of ``evaluating" the term in $\mathcal{M}$:
+
+\begin{definition}
+Let $\mathcal{M}$ be an $\mathcal{L}$-structure. Let $t$ be a term in the variables $(x_1,\dots, x_n)$ and let $\bar{a}=(a_1,\dots, a_n)\in M^n$. We define the \emph{evaluation} of $t$ at $\bar{a}$ inductively in the complexity of $t$:
+\begin{itemize}
+	\item if $t$ is the variable $x_i$, then $t^{\mathcal{M}}(\bar{a})=a_i$
+	\item if $t$ is a constant symbol $c$, then $t^{\mathcal{M}}(\bar{a})=c^{\mathcal{M}}$
+	\item if $t$ is a compositie term $f(t_1,\dots, t_n)$ and we have elements $t_i^{\mathcal{M}}(\bar{a})$ for each $i=1,\dots, n$, then $t^{\mathcal{M}}(\bar{a})=f^{\mathcal{M}}(t_1^{\mathcal{M}}(\bar{a}),\dots, t_n^{\mathcal{M}}(\bar{a}))$.
+\end{itemize}
+\end{definition}
+
+We are now ready to give the definition of an $\mathcal{L}$-formula:
+
+\begin{definition}
+An \emph{atomic }$\mathcal{L}$\emph{-formula} is either
+\begin{itemize}
+	\item $t_1=t_2$, where $t_1$ and $t_2$ are terms
+	\item $R(t_1,\dots, t_n)$, where $R\in\mathcal{R}$ is an $n$-ary relation and $t_1,\dots, t_n$ are terms.
+\end{itemize}
+An $\mathcal{L}$\emph{-formula} is one of the following:
+\begin{itemize}
+	\item $\top$ or $\bot$
+	\item an atomic $\mathcal{L}$-formula
+	\item $\phi\vee \psi$, $\phi\wedge \psi$, or $\neg\phi$, where $\phi$ and $\psi$ are formulas
+	\item $\exists x \hspace{0.1cm}\phi(x)$ or $\forall x \hspace{0.1cm}\phi(x)$, where $\phi$ is a formula
+\end{itemize}
+\end{definition}
+
+Again, this definition is recursive so that we obtain a method of proof by induction on the complexity of $\mathcal{L}$-formulae.
+
+\begin{example}
+	\begin{itemize}
+		\item $((x\cdot x)\cdot y)\cdot y=e$ is a formula in the language of groups. The formal syntax described above is quite cumbersome, so in practice we often revert to our natural notation, where the above formula would be equivalently represented by $x^2y^2=e$.
+		\item $\exists x(x^2+2x+1>0)$ is a formula in the language of ordered rings
+		\item $\forall x\forall y(\neg(xy\mid z)\vee \exists w(zw=1 \wedge 0=1))$ is a formula in the language of valued fields.
+	\end{itemize}
+\end{example}
+
+Given an $\mathcal{L}$-sentence $\phi$ and an $\mathcal{L}$-structure $\mathcal{M}$, we are now equipped with the tools to speak of the \emph{truth} $\phi$ in $\mathcal{M}$:
+
+\begin{definition}
+Let $\mathcal{M}$ be an $\mathcal{L}$-structure. Let $\phi$ be an $\mathcal{L}$-formula in the variables $(x_1,\dots,x_n)$ and $\bar{a}=(a_1,\dots,a_n)\in M^n$. We define the relation $\mathcal{M}\models \phi(\bar{a})$ (or simply $M\models \phi(\bar{a})$), read $M$ \emph{satisfies} $\phi(\bar{a})$, by induction on the complexity of $\phi$:
+	\begin{itemize}
+		\item if $\phi$ is $t_1=t_2$, then $M\models\phi(\bar{a})$ iff $t_1^{\mathcal{M}}(\bar{a})=t_2^{\mathcal{M}}(\bar{a})$
+		\item if $\phi$ is $R(t_1,\dots, t_n)$ then $M\models\phi(\bar{a})$ iff $(t_1^{\mathcal{M}}(\bar{a}),\dots, t_n^{\mathcal{M}}(\bar{a}))\in R^{\mathcal{M}}$
+		\item if $\phi$ is $\top$, then $M\models\phi(\bar{a})$
+		\item if $\phi$ is $\bot$, then $M\not\models\phi(\bar{a})$
+		\item if $\phi$ is $\psi\vee \chi$, then $M\models \phi(\bar{a})$ iff $M\models \psi(\bar{a})$ or $M\models \chi(\bar{a})$
+		\item if $\phi$ is $\psi\wedge \chi$, then $M\models \phi(\bar{a})$ iff $M\models \psi(\bar{a})$ and $M\models \chi(\bar{a})$
+		\item if $\phi$ is $\neg\psi$, then $M\models \phi(\bar{a})$ iff $M\not\models \psi(\bar{a})$
+		\item if $\phi$ is $\exists y\hspace{0.1cm}\psi(y)$, then $M\models \phi(\bar{a})$ iff there exists $b\in M$ such that $M\models \psi(\bar{a},b)$
+		\item if $\phi$ is $\forall y\hspace{0.1cm}\psi(y)$, then $M\models \phi(\bar{a})$ iff for all $b\in M$, $M\models \psi(\bar{a},b)$
+	\end{itemize}
+\end{definition}
+
+\begin{example}
+	\begin{itemize}
+		\item Let $\phi$ be the $\mathcal{L}_r$-formula $\exists x (x^2=-1)$. Then $\bC\models \phi$, while $\bR\not\models \phi$
+		\item Let $\phi$ be the $\mathcal{L}_g$-formula $\forall x\forall y(xy=yx)$. The abelian groups are precisely the groups $A$ for which $A\models \phi$. (Of course, there are also $\mathcal{L}_g$-structures which are not groups at all which still satisfy $\phi$: consider $\bN$ with the binary operation $+$ and distinguished element $10$).
+		\item Let $\phi(y)$ be the $\mathcal{L}_{or}$-formula $\exists x(x^2=y)$. Then $\bR\models\phi(2)$, while $\bR\not\models\phi(2)$.
+	\end{itemize}
+\end{example}
+
+Given a fixed $\mathcal{L}$-formula $\phi(x_1,\dots, x_n)$ and an $\mathcal{L}$-structure $\mathcal{M}$, one can study the subset of tuples $(a_1,\dots, a_n)\in M^n$ for which $M\models \phi(a_1,\dots, a_n)$. The study of such subsets is the cornerstone of model theory:
+
+\begin{definition}
+Let $\mathcal{M}$ be an $\mathcal{L}$-structure. We say that a subset $X\subset M^n$ is \emph{definable} if there is an $\mathcal{L}$-formula $\phi(x_1,\dots, x_n, y_1,\dots, y_m)$ and a tuple $\bar{b}=(b_1,\dots, b_m)\in M^m$ such that $$X=\{\bar{a}\in M^n: M\models \phi(\bar{a},\bar{b})\}.$$ The elements of the tuple $\bar{b}$ are called the \emph{parameters} of the definable set.
+\end{definition}
+
+\begin{example}
+Classical (affine) algebraic varieties are definable in the language $\mathcal{L}_r$. Indeed, if $V$ is the common zero-locus of the ideal $I=(f_1,\dots, f_n)\subset k[x_1,\dots,x_m]$, then $V$ is defined by the formula $$\bigwedge_{i=1}^n f_i(x_1,\dots, x_n)=0.$$ Notice that this is a formula with parameters given by the coefficients of the $f_i$. As a concrete example, the variety $V\subset\bR^2$ cut out by the equation $x^2-\pi y^2+1=0$ is defined by the $\mathcal{L}_r$-formula $\phi(x,y,z): x^2-zy^2+1=0$ with parameter $z=\pi$, i.e. $$V=\{(a,b)\in\bR^2: \bR\models\phi(a,b,\pi)\}.$$
+\end{example}
+
+We have thus set up the necessary language to describe an \emph{interpretation} of one structure in another (not to be confused with the interpretation of the symbols in an $\mathcal{L}$-structure):
+
+%interpretation%
+\begin{definition}
+An interpretation of an $L$-structure $M$ in an $L'$-structure $N$ consists of
+\begin{itemize}
+\item an $L'$-definable set $D\subset N^n$,
+\item an $L'$-definable equivalence relation $\sim$ on $D$
+\item for each $k$-ary function symbol in $L$, an $L'$-definable function $(D/\sim)^k\ra (D/\sim)$,
+\item for each $k$-ary relation symbol in $L$, an $L'$-definable subset of $(D/\sim)^k$,
+\end{itemize}
+such that the resulting $L$-structure on $D/\sim$ is isomorphic to $M$.
+\end{definition}
+
+As one would expect, when an $L$-structure $M$ is interpretable in an $L'$-structure $N$, one can also translate $L$-formulas into $L'$-formulas in a way that respects this interpretation:
+
+\begin{proposition}
+Let $M$ be an $L$-structure which is interpretable in an $L'$-structure $N$. For any first-order $L$-formula $\phi(x_1,\dots, x_k)$, there is a first-order $L'$ formula $\psi(y_1,\dots, y_k)$ (where each $y_i$ is an $n$-tuple of variables) such that for all $a_1,\dots, a_k\in D$, $N\models \psi(a_1,\dots, a_k)$ if and only if $M\models \phi(f([a_1]_{\sim}), \dots, f([a_k]_{\sim}))$, where $f:(D/\sim)\ra M$ is the isomorphism.
+\end{proposition}
+
+As is typical in model theory, one can further speak of interpretations \emph{with parameters} and prove and analogous set of propositions about such interpretations. 
+
+The group of $k$-points of a group variety is interpretable in $k$ (with parameters):
+
+\begin{proposition}
+Let $k$ be a field and $A/k$ an abelian variety. Then the group $A(k)$ is interpretable in the field $k$.
+\end{proposition}
+\begin{proof}
+This is well-known. See, for example, Pillay's article in \cite{bouscaren2009model}. The idea of the is simple enough to describe in short detail: abelian varieties are projective, so one may interpret the $k$-points of $A$ as solutions to a system of homogeneous polynomials in the projective space $\bP^n(k)$, which is the quotient of a definable subset of $k^{n+1}\setminus\{\bar{0}\}$ by a definable equivalence relation. Moreoever, the addition map and the inverse morphisms are regular, meaning they can be locally defined over $k$ by the quotient of two homogeneous polynomials of the same degree.
+\end{proof}
+
+We can, in effect, rid ourselves of the pesky parameters that arise out of interpreting a single abelian variety by interpreting group-theoretic statements uniformly across definable families:
+
+\begin{theorem}
+Let $\mathcal{A}\ra S$ be a quasi-projective abelian scheme with $S=\Spec(R)$, where $R$ is of finite type over $\bZ$. Let $k$ be a field and $M\subset S(k)$ a definable subset without parameters. For any sentence $\phi$ in the language of groups, there is a formula $\psi(x_1,\dots, x_n)$ in the language of rings so that if $\mathbf{a}\in M$, then $\mathcal{A}_{\mathbf{a}}(k)$ satisfies $\phi$ if and only if $k$ satisfies $\psi(\mathbf{a})$, where $\mathcal{A}_{\mathbf{a}}/k$ is the fiber of $\mathcal{A}$ over the $k$-point of $S$ corresponding to $\mathbf{a}$. In particular, $\mathcal{A}_{\mathbf{a}}(k)$ satisfies $\phi$ for all $\mathbf{a}\in M$ if and only if $k$ satisfies the sentence $\chi = \forall \mathbf{a}\in M, \psi(\mathbf{a})$.
+\end{theorem}
+\begin{proof}
+The first statement is clear from the above proposition. The second statement follows since the data defining $/\mathcal{A}$ is \emph{uniform} in the parameters of $S$, for, at bottom, that is what is \emph{meant} by an abelian scheme.
+\end{proof}
+
+This gives us a Lefschetz-like transfer-principle:
+
+\begin{theorem}
+\label{transfer-theorem}
+Let $T$ be a model complete theory extending the theory of fields and let $K$ and $L$ be two models of $T$. Let $\mathcal{A}/S$ and $M$ be as in the above theorem. Let $\phi$ be a sentence in the language of groups. Then $A_{\mathbf{a}}(K)$ satisfies $\phi$ for all $K$-points $\mathbf{a}\in M$ if and only if $A_{\mathbf{b}}(L)$ satisfies $\phi$ for all $L$-points $\mathbf{b}\in M$.
+\end{theorem}
+
+The final step is to prove that there are enough definable families to actually make use of this transfer principle.
+
+\begin{lemma}
+\label{comprehensive-family}
+For every pair of positive integers $g$ and $d$, there is a finite collection of abelian schemes $A_i\rightarrow S_i$ whose bases $S_i$ are quasi-projective (and therefore finite type) over $\Spec(\bZ)$ that satisfy the following condition: for every field $K$ and abelian variety $B/K$ of dimension $g$ possessing a polarization of degree $d^2$, there is a $K$-point $s:\Spec(K)\rightarrow S_i$ for some $i$ so that the fiber $(A_i)_s/K$ is isomorphic to $B$ as an abelian variety over $K$.
+\end{lemma}
+\begin{proof} For any fixed rational polynomial $\Phi$, recall that the functor $$\Hilbit(n,\Phi):\Sch^{op}\ra \Set$$ given by 
+$$\Hilbit(n,\Phi)(T)=\{Y\subset \mathbb{P}^n_T: Y\subset \mathbb{P}^n_T\text { is closed with Hilbert polynomial } \Phi\\ \text{ and }Y/T\text{ is flat}\}$$ is represented by a scheme $\Hilb(n,\Phi)$ which is projective over $\Spec(\bZ)$ (see \cite{FGAHilbert}, for instance). Let $Z/\Hilb(n,\Phi)$ be the universal object of this functor. Then $Z$ represents the functor $\Hilbit^*(n,\Phi):\Sch^{op}\rightarrow \Set$ which further specifies a section:
+\begin{align*}
+&\Hilbit^*(n,\Phi)(T)=\{(Y\subset \mathbb{P}^n_T, s: T\rightarrow Y) : Y\subset \mathbb{P}^n_T\text { is closed with Hilbert} \\&\text{ polynomial } \Phi,Y/T\text{ is flat, and } s\text{ is a section}\}
+\end{align*}
+
+\noindent Let $(Z'/Z, \varepsilon: Z\ra Z')$ be the universal object for this functor. Now, given an abelian variety $B/K$ of dimension $g$ possessing a polarization $\phi:B\ra B^{\vee}$ of degree $d^2$, the line bundle $(\id,\phi)^*(\mathcal{P})^3$ (where $\mathcal{P}$ is the Poincar\'e bundle on $B\times B^{\vee}$) induces an embedding $B\hookrightarrow \bP^n_K$ for which $n$ and the Hilbert polynomial $\Phi$ of $B$ are determined entirely by $g$ and $d$ (see \cite[Ch. 3, sec. 16]{mumfordAV}). We thus obtain a morphism $\Spec(K)\rightarrow Z$ (since abelian varieties come with sections). After restricting to the irreducible components of $Z$ and considering the smooth locus of $Z'\ra Z$, \cite[Theorem 6.14]{GIT} ensures that we have a finite collection of abelian schemes with the desired property.
+\end{proof}
+
+Let's illustrate our new technique by giving another proof of Proposition \ref{torsion-alg-closed-lefschetz}:
 
 \begin{proposition}
 Let $k$ be an algebraically closed field of characteristic zero and let $A/k$ be an abelian variety of dimension $g$. Then $A(k)[\tors]\cong (\bQ/\bZ)^{2g}$.
 \end{proposition}
 \begin{proof}
-sketch: The data specifying the abelian variety (the coefficients of the defining equations, multiplication maps, identity, etc.) all live in a finitely generated extension $L$ of $\bQ$. $L$ can be embedded into $\bC$. In fact, we can embed $L\subset\bar{L}\subset \bC$ as well. Now for each $n$, we have $A(k)[n]=A(\bar{L})[n]=A(\bC)[n]\equiv (\bZ/n\bZ)^2g$. The conclusion from here is purely group-theoretic.
+\label{torsion-alg-closed-transfer}
+$A$ possess a polarization of degree $d^2$ for some $d$, so by Lemma \ref{comprehensive-family}, there is an abelian scheme $\mathcal{A}/S$ with $S$ of finite type over $\Spec(\bZ)$, and a $k$-point $s:\Spec(k)\ra S$ so that the fiber $\mathcal{A}_s/k$ is isomorphic to $A$ as an abelian variety over $k$. Without loss of generality, we may assume that $S$ is affine. The statement ``there are exactly $n^{2g}$ elements killed by $n$" is a first order statement in the language of groups which, by Proposition \ref{torsion-C}, is known to hold for the fiber over each $\bC$-point of $S$. The theory of algebraically closed fields of characteristic zero is model complete, so by Theorem \ref{transfer-theorem}, it also holds for the fiber over every $k$-point of $S$. In particular, it holds for $A$. Again, that $A(k)[\tors]$ has the given form now follows from purely group-theoretic considerations.
 \end{proof}
-
-While this technique works for algebraically closed fields, it won't work for real closed fields. (Does it?? I don't think so) 
-
-\begin{theorem}
-\label{transfer-principle}
-Let $\phi$ be any sentence in the language of groups. Then given some algebraic data defining an abelian variety $A/k$, one can suitably ``transform" $\phi$ into a sentence in the language of rings with parameters in $k$ (actually, with parameters in the given algebraic data) that is ``equivalent" in some sense to $\phi$
-\end{theorem}
-
-perhaps the right idea is to ``translate" (by induction on the complexity of the formula) each sentence into one in the language of rings \emph{using} the data defining the algebraic group. 
-
-Alternatively, one can literally read sentences in the language of groups as meaningful when talking about group objects in a category, provided you understand the ``elements" of the group to be ``generalized elements" in the category. So perhaps one simply proves that certain statements in the language of groups, when properly interpreted as sentences about generalized (perhaps $\Spec(k)$-shaped elements?), are equivalent to certain algebraic conditions in the language of rings just by appealing to the contravariant nature of algebraic geometry. idk
-
-Thus if we are given a definable set $M$ whose points parametrize algebraic groups, our transfer princple allows us to make first-order statements about \emph{all} of the algebraic group that are parametrized in this family. In particular, we can use the Lefschetz princple (and the related real closed/$p$-adically closed versions thereof) and the known structure of abelian varieties over $\bC$, $\bR$, and $\bQ_p$ to deduce results about abelian varieties over any algebraically closed field of characteristic zero, real closed field, or $p$-adically closed field. 
-
-To get some use out of this principle, we need to some parameter spaces to work with. The following result gives us the most general way of doing so:
-
-insert comprehensive family here!

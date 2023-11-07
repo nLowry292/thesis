@@ -1,8 +1,88 @@
+\externaldocument{intro}
+
 \chapter{Abelian varieties over real closed fields}
-asdf
+The first application of our transfer principle will be to the case of abelian varieties over real closed fields.
+
+\begin{definition}
+A field $R$ is said to be \emph{real closed} if it satisfies any of the following equivalent conditions:
+	\begin{itemize}
+		\item $R$ is formally real (i.e. $-1$ is not a sum of squares in $R$) and it has no proper formally real algebraic extension.
+		\item There is a total order on $R$ making it an ordered field such that every positive element has a square root in $R$ and every polynomial of odd degree has a root in $R$.
+		\item $R$ is not algebraically closed, but $R(\sqrt{-1})$ is algebraically closed.
+		\item $R$ is elementarily equivalent to $\bR$, in the sense that if $\phi$ is any sentence in the language of fields, then $R\models \phi$ if and only if $\bR\models \phi$.
+	\end{itemize}
+\end{definition}
+
+Naturally, it is the fourth condition which is of interest to us. In the next section, we reproduce the relevant results for abelian varieties over $\bR$, as given in \cite{gross-harris}; we use our transfer principle to obtain analogous results for abelian varieties over arbitrary real closed fields in the section thereafter.
 
 \section{Abelian varieties over $\bR$}
-asdf
+The result of this section can be found in \cite{gross-harris}. The proof is real analytic in nature and is reproduced here to illustrate that Weil's philosophy of the Lefschetz principle holds equally well in the setting of real closed fields.
 
-\section{Abelian varieties over arbitrary real closed fields}
-asdf
+\begin{theorem}
+\label{structure-of-real-AVs}
+Let $A/\bR$ be an abelian variety of dimension $g$ defined over $\bR$. Then there is an integer $d$ with $0\leq d\leq g$ so that $$A(\bR)\isom (\bR/\bZ)^g \times (\bZ/2\bZ)^d$$
+\end{theorem}
+\begin{proof}
+Let $A(\bR)^0$ be the connected component of the identity in $A(\bR)$. Then since $A(\bR)^0$ is a compact, connected, abelian, real Lie group of dimension $g$, it is a torus: $A(\bR)^0\isom (\bR/\bZ)^g$ (see \cite{compactliegroups}, for instance). Since this group is divisible, the exact sequence $$0\ra A(\bR)^0 \ra A(\bR)\ra A(\bR)/A(\bR)^0\ra 0$$ splits, and we find that $A(\bR)\isom (\bR/\bZ)^g\times A(\bR)/A(\bR)^0$. Now it suffices to demonstrate that the component group $A(\bR)/A(\bR)^0$ is a 2-group whose rank falls in the specified range.
+
+Consider the norm map $N:A(\bC)\ra A(\bR)$ given by $N(P)=P+\bar{P}$. $N$ is a continuous homomorphism and $A(\bC)$ is compact and connected, so the image $N(A(\bC))$ is a closed, connected subgroup of $A(\bR)$ containing the identity. On the other hand, the image $N(A(\bC))$ contains the finite index subgroup $2A(\bR)$ and so is itself finite index and therefore open (NOTE: perhaps say why $2A(\bR)$ is finite index? it follows from an easy galois cohomology argument, but it is also probably easier than that? finite index + closed implies open is standard top. group fact). We conclude that $N(A(\bC))=A(\bR)^0$ and furthermore that $A(\bR)/A(\bR)^0$ is killed by 2. $A(\bR)$ is compact, so the component group is finite. Thus $A(\bR)\isom (\bR/\bZ)^g\times (\bZ/2\bZ)^d$ for some $d$. The bound on $d$ follows from Proposition \ref{torsion-C}
+\end{proof}
+
+\section{Abelian varieties over real closed fields}
+Much of the content in this section can be found in the author's previous work \cite{lowry2023abelian}, but is here reformulated using the machinery developed in Section 1.5.
+
+As mentioned above (Theorem \ref{frey-jarden}), Frey and Jarden show in \cite{frey-jarden} that for every abelian variety of dimension $g>0$ defined over an algebraically closed field $K$ of characteristic zero, there is an isomorphism of groups $$A(K)\cong V\times(\bQ/\bZ)^{2g},$$ where $V$ is a $\bQ$-vector space of dimension equal to $|K|$, the cardinality of $K$. We prove an analogous result for real closed fields:
+
+\begin{theorem}
+\label{structure-of-realclosed-AVs}
+Let $R$ be a real closed field and $A/R$ an abelian variety of dimension $g>0$. Then there is an isomorphism of groups $$A(R)\cong V \times (\bQ/\bZ)^g\times (\bZ/2\bZ)^d$$ for some $0\leq g \leq d$, where $V$ is a $\bQ$-vector space of dimension $|R|$, the cardinality of $R$.
+\end{theorem}
+
+We first prove that $A(R)$ has the desired rank $\dim_{\bQ}A\otimes_{\bZ} \bQ$.
+
+\begin{proposition}
+\label{prop-freepart}
+Let $A/R$ be an abelian variety of dimension $g>0$ over a real closed field. Then the rank of $A(R)$ is equal to the cardinality of $R$.
+\end{proposition}
+\begin{proof}
+It is known that real closed fields are ``ample" (or ``large" as in Pop \cite{pop}) in the sense of Definition \ref{ample} above (NOTE: this seems to be well-known, but I can't find a specific reference for a proof; if you wanted to prove it, it would be (essentially) exactly the same argument as this very proposition!). Thus Theorem \ref{fehm-petersen} demonstrates that $A(R)$ has infinite rank. If $R$ countable, then so too is $A(R)$ and the result follows.\newline \indent If $R$ is uncountable, then one may employ the implicit function theorem for real closed fields (as in \cite{real}, Corollary 2.9.8) to find at least $|R|$ points in $A(R)$. Indeed, consider an affine open $U=\Spec(R[x_1,\dots, x_n]/(f_1,\dots, f_m))$ around the identity $e\in A(R)$. As $A$ is smooth, it is a local complete intersection, so we may assume that $n-m=g$. Consider the map $R^n\ra R^m$ given by the $f_i$. Again since $A$ is smooth, the Jacobian matrix $(\partial f_i / \partial x_j)$ has maximal rank $m$ at $e$ and thus there is some $m\times m$ minor of this matrix which is non-vanishing. After relabeling coordinates we may assume that $e$ belongs to the open set where $\det( (\partial f_i / \partial x_j)_{g+1\leq j\leq n})\neq 0$. Now the implicit function theorem guarantees the existence of a non-empty open subset $C\subset R^g$ and a definable function $h:C\ra R^m$ so that $(a_1,\dots, a_g, h(a_1,\dots, a_g))\in A(R)$ for every $(a_1,\dots, a_g)\in C$. As non-empty open subsets in $R^g$ have cardinality $|R|$, this demonstrates at least $|R|$ points of $A(R)$. As the cardinality of $A(R)$ is certainly at most that of $R$, we have $|A(R)|=|R|$. \newline \indent The torsion subgroup $T\subset A(R)$ is at most countable, so $|A(R)/T|=|R|$ since we assume $R$ to be uncountable. Finally, $A(R)/T$ is isomorphic to a subgroup of $A(R)\otimes \bQ$, so $|A(R)\otimes \bQ|=|R|$ as well. The result follows from a simple fact of cardinal arithmetic: if $V$ is a $\bQ$-vector space of uncountable cardinality $\kappa$, then $\dim_{\bQ} V=\kappa$.
+\end{proof}
+
+\begin{proposition}
+\label{torsion-prop-real-closed}
+Let $R$ be a real closed field, $A/R$ an abelian variety of dimension $g>0$. Then $A(R)[\tors]\isom (\bQ/\bZ)^g\times (\bZ/2\bZ)^d$ for some $0\leq d\leq g$.
+\end{proposition}
+\begin{proof}
+Arguing exactly as in the proof of Proposition \ref{torsion-alg-closed-transfer}, there is an abelian scheme $\mathcal{A}/S$ with $S$ affine and finite type over $\Spec(\bZ)$ together with an $R$-point $s:\Spec(R)\ra S$ such that the fiber $\mathcal{A}_s/R$ is isomorphic to $A/R$ as an abelian variety over $R$. Now for fixed odd $p$ and fixed natural numbers $n$ and $g$, the statement ``there are exactly $p^{ng}$ elements killed by $p^n$" is a first-order statement in the language of groups which, by Theorem \ref{structure-of-real-AVs}, is known to hold for the fiber over each $\bR$-point of $S$. By Theorem \ref{transfer-theorem}, it must hold for $A$ as well. 
+
+Similarly, the sentence ``for some $0\leq d\leq g$, there are exactly $2^{g+d}$ elements killed by 2" is a first-order sentence in the language of groups which, again by Theorem \ref{structure-of-real-AVs}, is known to hold for the fiber over each $\bR$-point of $S$, and so by Theorem \ref{transfer-theorem}, must hold for $A$ as well. Now, for each $n$, the first-order sentence ``for every $0\leq g\leq d$, if there are exactly $2^{ng+d}$ elements killed by $2^n$, then there are exactly $2^{(n+1)g+d}$ elements killed by $2^{n+1}$" is known to hold for the fiber over each $\bR$-point of $S$ and so again by Theorem \ref{transfer-theorem}, these statements holds for $A$. This sequence of statements amounts to the claim that there is some \emph{fixed} $0\leq d \leq n$ so that for each $n$, $|A[2^n|(R)|=2^{ng+d}$. 
+
+As in the case of an algebraically closed field, purely group theoretic considerations now imply that the torsion subgroup of $A$ has the desired form.
+\end{proof}
+
+NOTE: I think we came up with a proof of this fact that doesn't require the model theory, at least when $A$ is principally polarized. It was something like ``look at the action of conjugation on the $\bZ/p\bZ$-vector space $A[p](R(\sqrt{-1}))$ and use the Weil pairing." Should we include this?
+
+We are now ready to prove Theorem \ref{structure-of-realclosed-AVs}:
+
+\begin{proof}
+The above proposition shows that the torsion subgroup $T$ of $A$ is a divisible group times a finite group; it follows from \cite[Theorem 8.1]{baer} that $A(R)$ is torsion-split, i.e. $A(R)\cong V\oplus T$, where $V$ is torsion free. We need only to verify that $V$ is uniquely divisible. First note that $2A(R)$ is uniquely divisible. Indeed, it is uniquely $n$-divisible for each $n$, as this is a first-order statement in the language of groups which can be verified over the $\bR$-points in a definable family containing $A$. Now given any $v\in V$, $2v\in 2A(R)$ whence $2v/2n\in A(R)$, i.e. there is some $y\in A(R)$ so that $2v=2ny$. Writing $y=w+t$ for $w\in V$ and $t\in T$, we find that $2v=2nw$, and since $V$ is torsion-free we must have $v=nw$. That $V$ is \emph{uniquely} divisible follows since $2A(R)$ is uniquely divisible. Finally, that $V$ has the given dimension follows from Proposition \ref{prop-freepart}.
+\end{proof}
+
+\begin{corollary}
+Let $R$ be a real closed field, $p$ an odd prime, and $A/R$ an abelian variety of dimension $g$. Then the Tate module $T_p(A)$ is a free $\bZ_p[G]$-module of rank $g$ where $G=\Gal(R(\sqrt{-1})/R)$.
+\end{corollary}
+\begin{proof}
+This follows immediately from the description of $A[p^n](R)$ above.
+\end{proof}
+
+The final result of this section examines how the isomorphism type of the group of rational points of a real abelian variety varies in a family. The structure theorem proved above demonstrates that this isomorphism type is entirely determined by the number of 2-torsion points, giving evidence to suggest that this isomorphism type should be locally constant. As an illustrative example, consider the family $\mathcal{E}\ra \Spec(\bZ[a,b][1/(4a^3+27b^2)])=S$, where $\mathcal{E}$ is the closed subscheme of $\bP^2\times S$ cut out by $Y^2Z=X^3+aXZ^2+bZ^3$. One notices that the elliptic curves with \emph{connected} real locus (hence, exactly two 2-torsion points) occur over the fibers with $4A^3+27B^2>0$, and that those with \emph{disconnected} real locus (hence, exactly four 2-torsion points) occur over the fibers with $4A^3+27B^2<0$. We show that this is a more general phenomenon.
+
+\begin{proposition}
+\label{deformation}
+Let $\mathcal{A}\ra S$ be an abelian scheme of dimension $g$ with $S$ of finite type over a real closed field $R$. Then the function $S(R)\ra \bN$ sending $s\in S(R)$ to $|\mathcal{A}_s[2](R)|$ is locally constant with respect to the order topology on $S(R)$ inherited from the ordering on $R$. In particular, the isomorphism class of the fiber (as an abelian group) is constant on the connected components of $S(R)$ (in the order topology).
+\end{proposition}
+\begin{proof}
+We seek to apply a suitable version of the following elementary fact from the theory of real manifolds, whose proof (as in \cite{milnor}) is a simple application of the inverse function theorem: let $f:M\ra N$ be a smooth map between real manifolds of the same dimension with $M$ compact. If $U$ is the (open) subset of $N$ consisting of regular values, then the function $U\rightarrow \bN$ which sends $y\in U$ to $|f\inv(y)|$ is locally constant. 
+
+Now, the 2-torsion subgroup scheme $\mathcal{A}[2]$ is \'etale over $S$, as it is the pullback of the \'etale morphism $[2]:\mathcal{A}\ra A$. For each $s\in S(R)$, the set $\mathcal{A}_s[2](R)$ is finite and non-empty by Theorem \ref{structure-of-realclosed-AVs}, so at the level of $R$-points, we have a surjective \'etale morphism $\mathcal{A}[2](R)\ra S(R)$ (where an \'etale morphism of algebraic sets is a regular morphism which induces an isomorphism of tangent spaces). A definable version of the inverse function theorem is used in \cite[Proposition 8.1.2]{real} to conclude that $\mathcal{A}[2](R)\ra S(R)$ is a local diffeomorphism. The first result now follows from the exact same argument as in the case of real manifolds. The isomorphism class of a real abelian variety (as an abelian group) is completely determined by its 2-torsion subgroup, so the second statement follows.
+\end{proof}
