@@ -1,21 +1,141 @@
 \externaldocument{intro}
 
 \chapter{Abelian varieties over real closed fields}
-The first application of our transfer principle will be to the case of abelian varieties over real closed fields.
+The first application of our transfer principle will be to the case of abelian varieties over real closed fields. We begin with a detailed discussion of real closed fields.
+
+\section{Real closed fields}
+The study of real closed fields largely began in an effort to solve Hilbert's 17th problem: 
+\begin{center}
+given $f\in\bR[x_1,\dots,x_n]$ with $f(a_1,\dots, a_n)\geq 0$ for all $(a_1,\dots,a_n)\in\bR^n$, can $f$ be expressed as a sum of squares of rational functions? i.e. does there exists $g_1,\dots, g_k\in \bR(x_1,\dots, x_n)$ such that $f=\sum_{i=1}^k g_i^2$?
+\end{center}
+
+One must allow for rational functions, as the polynomial $$f(x,y,z)=z^6+x^4y^2+x^2y^4-3x^2y^2z^2$$ takes only non-negative values, but cannot be written as a sum of squares of polynomials \cite{roy2000role}.
+
+In 1927, Emil Artin demonstrated a positive solution to this problem. His proof has the rather striking feature that one must consider not only points of $\bR^n$, but points that belong to certain large extensions of the field of rational functions $\bR(x_1,\dots,x_n)$; these extensions satisfy certain algebraic properties analogous to those of the real numbers and as such were coined \emph{real closed fields}.
 
 \begin{definition}
-A field $R$ is said to be \emph{real closed} if it satisfies any of the following equivalent conditions:
-	\begin{itemize}
-		\item $R$ is formally real (i.e. $-1$ is not a sum of squares in $R$) and it has no proper formally real algebraic extension.
-		\item There is a total order on $R$ making it an ordered field such that every positive element has a square root in $R$ and every polynomial of odd degree has a root in $R$.
-		\item $R$ is not algebraically closed, but $R(\sqrt{-1})$ is algebraically closed.
-		\item $R$ is elementarily equivalent to $\bR$, in the sense that if $\phi$ is any sentence in the language of fields, then $R\models \phi$ if and only if $\bR\models \phi$.
-	\end{itemize}
+	\begin{enumerate}
+		\item An ordered field $(R,\leq)$ is a field $R$ together with a linear order $\leq$ on $R$ such that for all $a,b,c\in R$ 
+			\begin{itemize}
+				\item if $a\leq b$, then $a+c\leq b+c$ and
+				\item if $a\leq b$ and $0\leq c$, then $ac\leq bc$
+			\end{itemize}
+		\item A field $R$ is said to be \emph{real closed} if there is a unique linear ordering $\leq$ on $R$ making $(R,\leq)$ into an ordered field and such that every positive element has a square root in $R$ and every odd-degree polynomial has a root in $R$.
+	\end{enumerate}
 \end{definition}
 
-Naturally, it is the fourth condition which is of interest to us. In the next section, we reproduce the relevant results for abelian varieties over $\bR$, as given in \cite{gross-harris}; we use our transfer principle to obtain analogous results for abelian varieties over arbitrary real closed fields in the section thereafter.
+\begin{example}
+	\begin{itemize}
+		\item The real numbers $\bR$ are real closed. 
+		\item The field of real algebraic number $\bar{\bQ}\cap \bR$ is real closed.
+		\item The field of Puiseux series $R\langle\langle T\rangle\rangle=\bigcup_{n\geq 1} \bR((T^{1/n}))$ is real closed. It's ordering is that induced by the valuation $v(f)=k/N$, where $f=\sum\limits_{n=k}^{\infty} a_nT^{n/N}$ and $a_k\neq 0$.
+		\item The field of computable numbers --- those real number which can be computed to arbitrary precision in finite time by a Turing machine--- is real closed: the Taylor series for $\sqrt{x}$ can be used to calculate square roots and Newton's method can be used to calculate roots of odd-degree polynomials; both methods can easily be implemented on Turing machines.
+	\end{itemize}
+\end{example}
+
+Surprisingly, one can determine the orderability of a field through purely field-theoretic considerations. This seemingly simple fact turns out to be quite important in developing the theory of real closed fields.
+
+\begin{definition}
+A field $K$ is said to be \emph{formally real} if $-1$ is not a sum of squares in $K$.
+\end{definition}
+\begin{theorem}
+\label{formallyreal-orderability}
+A field $K$ is formally real if and only if there is a linear order $\leq$ on $K$ such that $(K,\leq)$ is an ordered field. Moreover, if $a\in K$ is not a sum of squares in $K$, then we can choose an ordering such that $a\leq 0$. 
+\end{theorem}
+\begin{proof}
+It is immediate that an ordered field is formally real. The converse is part of a famous result of Artin and Schreier cited below (Theorem \ref{artin-schreier}).
+\end{proof}
+
+Given an ordered field $(F,\leq)$, one can consider ordered extensions of $F$ which extend its ordering. Chasing the analogy with algebraically closed fields, one is led to consider ``maximal" such extensions:
+
+\begin{definition}
+Let $F$ be a formally real field. A formally real field $R$ is a \emph{real closure} of $F$ if $R/F$ is algebraic and $R$ is maximal among formally real algebraic extensions of $F$.
+\end{definition}
+
+\begin{proposition}
+Let $F$ be a formally real field. Then $F$ has a real closure and this real closure is real closed.
+\end{proposition}
+\begin{proof}
+Let $K$ be an algebraic closure of $F$ and consider the set $$\mathcal{R}:=\{R: F\subset R\subset K\text{ and } R \text{ is formally real} \}.$$ $\mathcal{R}$ is poset under inclusion. One easily proves that if $(R_i)_i$ is a chain in $\mathcal{R}$ that $\bigcup_i R_i\subset K$ is itself formally real and thus an upper bound of $(R_i)_i$ in $\mathcal{R}$. Zorn's lemma now implies that $\mathcal{R}$ has a maximal element, which can easily be shown to be a real closure of $F$. With some work, one sees that Theorem \ref{formallyreal-orderability} implies that this real closure is indeed real closed.
+\end{proof}
+
+\begin{example}
+	\begin{itemize}
+		\item The real closure of $\bQ$ is the field of real algebraic numbers $\bar{\bQ}\cap \bR$
+		\item The real closure of the field of real Laurent series $\bR((T))$ is the field of Puiseux series $\R\langle\langle T\rangle\rangle$. 
+		\item The real closure of the field of rational functions $\bR(T)$ is the field of algebraic Puiseux series, i.e. those Puiseux series which are algebraic over $\bR(T)$.
+	\end{itemize}
+\end{example}
+
+Given a real closed field $R$, the unique ordering making $R$ into an ordered field is given by $x\leq y$ iff $\exists z (y-x=z^2)$. This simple fact, together with Theorem \ref{formallyreal-orderability} allows us to do something quite unexpected: we can axiomatize the theory of real closed fields in the language of rings! Let $\catname{RCF}$ be the $\mathcal{L}_r$-theory consisting of 
+\begin{itemize}
+	\item the field axioms,
+	\item a demonstration that the field is formally real: for each $n\geq 1$, the sentence $$\forall x_1\dots \forall x_n(-1\neq x_1^2+\dots+x_n^2),$$
+	\item an exhibition of a root for every odd-degree polynomial: for each $n\geq 1$, the sentence $$\forall a_0\dots \forall a_{2n} \exists x(x^{2n+1}+a_{2n}x^{2n}+\dots+a_1x+a_0=0),$$ and
+	\item an exhibition of a square-root for every positive element: the sentence $\forall x\exists y( (y^2=x)\vee y^2=-x) )$
+\end{itemize}
+
+We may furthermore construct the theory $\catname{RCF}_{\leq}$ in the language $\mathcal{L}_{or}=\mathcal{L}\cup \{\leq\}$ which consists of $\catname{RCF}\cup\{\forall x\forall y (x\leq y \iff \exists z (y-x=z^2) ) \}$. These two theories have the same models, but it is sometimes convenient to have the extra symbol $\leq$. Thus the models of $\catname{RCF}$ (and hence also $\catname{RCF}_{\leq}$) are precisely the real closed fields.
+
+There are many equivalent formulations of a real closed field. The most common are given in the following
+
+\begin{theorem}
+\label{artin-schreier}
+Let $R$ be a field. The following are equivalent:
+	\begin{enumerate}
+		\item $R$ is real closed
+		\item $R$ is formally real and has no proper formally real algebraic extensions
+		\item $R$ is not algebraically closed, but $R(\sqrt{-1})$ is algebraically closed
+		\item The absolute Galois group of $R$ is finite and non-trivial (and as a consequence of condition 3 it must be a cyclic group of order 2)
+		\item $R$ is elementary equivalent to $\bR$, i.e. given any $\mathcal{L}_r$-sentence $\phi$, $R\models\phi$ iff $\bR\models \phi$
+	\end{enumerate}
+\end{theorem}
+\begin{proof}
+The equivalence of conditions (1)-(4) is the famous Artin-Schreier theorem \cite{artin1927algebraische}. The equivalence of (1) and (5) follows from the fact that $\catname{RCF}$ and $\catname{RCF}_{\leq}$ are model complete \cite{real}[Proposition 5.2.3]
+\end{proof}
+
+Of course, it is condition 5 which is of interest to us. To demonstrate the power of this theorem, we can now make short work of Hilbert's proposed problem: 
+\begin{theorem}
+\label{hilberts17th}
+Let $R$ be a real closed field and let $f\in R[x_1,\dots, x_n]$ be such that $f(a_1,\dots, a_n)\geq 0$ for all $(a_1,\dots, a_n)\in R$. Then $f$ is a sum of squares in $R(x_1,\dots, x_n)$.
+\end{theorem}
+\begin{proof}
+To avoid confusion, let us differentiate the polynomial \emph{form} $f\in R[x_1,\dots, x_n]$ from the polynomial \emph{function} $\hat{f}:R^n\ra R$ determined by $f$.
+
+\noindent Suppose $f$ is not a sum of square in $R(x_1,\dots, x_n)$. Since $R$ is formally real, so is $R(x_1,\dots, x_n)$. By Theorem \ref{formallyreal-orderability}, we may choose an ordering on $R(x_1,\dots, x_n)$ so that $f<0$. Let $\mathcal{R}$ be a real closure of $R(x_1,\dots, x_n)$. Then $\mathcal{R}\models \exists a_1,\dots, a_n (\hat{f}(a_1,\dots, a_n)<0)$. Indeed, taking $a_i=x_i$ we get $\hat{f}(a_1,\dots, a_n)=f<0$. 
+By the model-completeness of real closed fields, we find that $R\models \exists a_1,\dots, a_n (\hat{f}(a_1,\dots, a_n)<0)$ as well.
+\end{proof}
+
+As we've established a link with model theory, it is worth investigating the definable subsets in $\catname{RCF}_{\leq}$. Now given access to the ordering $\leq$, it is natural to extend the notion of an algebraic set as it is found in classical algebraic geometry to that of a \emph{semialgebraic} set:
+
+\begin{definition}
+Let $R$ be a real closed field. A subset $A\subset R^n$ is called \emph{semialgebraic} if it is definable in $\mathcal{L}_{or}$ by a finite boolean combination of polynomial equalities and inequalities.
+\end{definition}
+
+\begin{example}
+	\begin{itemize}
+		\item The subset of $\bR^2$ defined by $ xy=1\wedge x>0$ is semialgebraic. It's projection onto the $x$-axis is semialgebraic, but not algebraic.
+		\item The subset of $\bR^2$ defined by $(x^2+y^2-1)^3\leq x^2y^3$ makes a rather lovely semialgebraic set.
+		\item Every semialgebraic subset of $\bR$ is a finite union of points and intervals. This property (called \emph{o-minimality}) turns out to be wildly useful. A detailed analysis of o-minimal expansions $\bR$ is the cornerstone of the aforementioned proof of the Andr\'e-Oort conjecture \cite{pila2022canonical}.
+		\item The subset of $\bR^2$ defined by $y=\lfloor x \rfloor$ is not semialgebraic.
+	\end{itemize}
+\end{example}
+
+The keen reader might implore as to why we have seemingly restricted ourselves to boolean combinations of polynomial (in)equalities. \emph{What of quantifiers?} they bravely ask. But 
+\emph{nay} sayeth Tarski, a man with little time for such trifling things:
+
+\begin{theorem}
+\label{tarski-seidenberg}
+$\catname{RCF}_{\leq}$ admits \emph{quantifier elimination}, i.e. given any real closed field $R$ and $\mathcal{L}_{or}$-formula $\phi(x_1,\dots, x_n)$, there is a quantifier-free $\mathcal{L}_{or}$-formula $\psi(x_1,\dots, x_n)$ so that for all $(a_1,\dots, a_n)\in R^n, R\models \phi(a_1,\dots, a_n)$ iff $R\models \psi(a_1,\dots, a_n)$ (that is to say, $\phi$ and $\psi$ determine the same definable subset in all models of $\catname{RCF}_{\leq}$). Put geometrically, every $\mathcal{L}_{or}$-definable subset of $R^n$ is semialgebraic.
+\end{theorem}
+\begin{proof}
+This is the Tarski-Seidenberg theorem \cite{real}[Theorem 1.4.2].
+\end{proof}
+
+If $R$ is real closed, we can define the \emph{order topology} on $R$ by the declaring the basic open subsets to be the open intervals $(a,b):=\{c\in R: a<c<b\}$ with $a,b\in R$; the product topology induced on $R^n$ (generated by products of open intervals) is also called the order topology. Real closed fields with the order topology possess many of the nice topological and analytic properties of $\bR$ with the Euclidean topology, provided we restrict ourselves to definable sets and definable functions: the least upper bound property, intermediate value theorem, limits and derivatives, inverse function theorem, implicit function theorem etc. These results (and many more) can be found in \cite{real}.
 
 \section{Abelian varieties over $\bR$}
+Our goal is to use the transfer principle, Theorem \ref{transfer-theorem}, to obtain results about abelian varieties over arbitrary real closed fields using known results for those defined over $\bR$.
 The result of this section can be found in \cite{gross-harris}. The proof is real analytic in nature and is reproduced here to illustrate that Weil's philosophy of the Lefschetz principle holds equally well in the setting of real closed fields.
 
 \begin{theorem}
@@ -25,11 +145,13 @@ Let $A/\bR$ be an abelian variety of dimension $g$ defined over $\bR$. Then ther
 \begin{proof}
 Let $A(\bR)^0$ be the connected component of the identity in $A(\bR)$. Then since $A(\bR)^0$ is a compact, connected, abelian, real Lie group of dimension $g$, it is a torus: $A(\bR)^0\isom (\bR/\bZ)^g$ (see \cite{compactliegroups}, for instance). Since this group is divisible, the exact sequence $$0\ra A(\bR)^0 \ra A(\bR)\ra A(\bR)/A(\bR)^0\ra 0$$ splits, and we find that $A(\bR)\isom (\bR/\bZ)^g\times A(\bR)/A(\bR)^0$. Now it suffices to demonstrate that the component group $A(\bR)/A(\bR)^0$ is a 2-group whose rank falls in the specified range.
 
-Consider the norm map $N:A(\bC)\ra A(\bR)$ given by $N(P)=P+\bar{P}$. $N$ is a continuous homomorphism and $A(\bC)$ is compact and connected, so the image $N(A(\bC))$ is a closed, connected subgroup of $A(\bR)$ containing the identity. On the other hand, the image $N(A(\bC))$ contains the finite index subgroup $2A(\bR)$ and so is itself finite index and therefore open (NOTE: perhaps say why $2A(\bR)$ is finite index? it follows from an easy galois cohomology argument, but it is also probably easier than that? finite index + closed implies open is standard top. group fact). We conclude that $N(A(\bC))=A(\bR)^0$ and furthermore that $A(\bR)/A(\bR)^0$ is killed by 2. $A(\bR)$ is compact, so the component group is finite. Thus $A(\bR)\isom (\bR/\bZ)^g\times (\bZ/2\bZ)^d$ for some $d$. The bound on $d$ follows from Proposition \ref{torsion-C}
+Consider the norm map $N:A(\bC)\ra A(\bR)$ given by $N(P)=P+\bar{P}$. $N$ is a continuous homomorphism and $A(\bC)$ is compact and connected, so the image $N(A(\bC))$ is a closed, connected subgroup of the compact group $A(\bR)$ containing the identity. On the other hand, the image $N(A(\bC))$ contains the finite index subgroup $2A(\bR)$ and so is itself finite index and therefore open. We conclude that $N(A(\bC))=A(\bR)^0$ and furthermore that $A(\bR)/A(\bR)^0$ is killed by 2. $A(\bR)$ is compact, so the component group is finite. Thus $A(\bR)\isom (\bR/\bZ)^g\times (\bZ/2\bZ)^d$ for some $d$. The bound on $d$ follows from Proposition \ref{torsion-C}
 \end{proof}
 
+As we have no hope of giving a meaningful interpretation to the torus $\bR/\bZ$ over an arbitrary real closed field, we here remark that $\bR/\bZ$ is uniquely divisible and torsion-split, i.e. $\bR/\bZ\isom V\times \bQ/\bZ$, where $V$ is a $\bQ$-vector space of cardinality of the continuum.
+
 \section{Abelian varieties over real closed fields}
-Much of the content in this section can be found in the author's previous work \cite{lowry2023abelian}, but is here reformulated using the machinery developed in Section 1.5.
+Much of the content in this section can be found in the author's previous work \cite{lowry2023abelian}, but is here reformulated using the machinery developed in Section 1.6.
 
 As mentioned above (Theorem \ref{frey-jarden}), Frey and Jarden show in \cite{frey-jarden} that for every abelian variety of dimension $g>0$ defined over an algebraically closed field $K$ of characteristic zero, there is an isomorphism of groups $$A(K)\cong V\times(\bQ/\bZ)^{2g},$$ where $V$ is a $\bQ$-vector space of dimension equal to $|K|$, the cardinality of $K$. We prove an analogous result for real closed fields:
 
@@ -45,7 +167,9 @@ We first prove that $A(R)$ has the desired rank $\dim_{\bQ}A\otimes_{\bZ} \bQ$.
 Let $A/R$ be an abelian variety of dimension $g>0$ over a real closed field. Then the rank of $A(R)$ is equal to the cardinality of $R$.
 \end{proposition}
 \begin{proof}
-It is known that real closed fields are ``ample" (or ``large" as in Pop \cite{pop}) in the sense of Definition \ref{ample} above (NOTE: this seems to be well-known, but I can't find a specific reference for a proof; if you wanted to prove it, it would be (essentially) exactly the same argument as this very proposition!). Thus Theorem \ref{fehm-petersen} demonstrates that $A(R)$ has infinite rank. If $R$ countable, then so too is $A(R)$ and the result follows.\newline \indent If $R$ is uncountable, then one may employ the implicit function theorem for real closed fields (as in \cite{real}, Corollary 2.9.8) to find at least $|R|$ points in $A(R)$. Indeed, consider an affine open $U=\Spec(R[x_1,\dots, x_n]/(f_1,\dots, f_m))$ around the identity $e\in A(R)$. As $A$ is smooth, it is a local complete intersection, so we may assume that $n-m=g$. Consider the map $R^n\ra R^m$ given by the $f_i$. Again since $A$ is smooth, the Jacobian matrix $(\partial f_i / \partial x_j)$ has maximal rank $m$ at $e$ and thus there is some $m\times m$ minor of this matrix which is non-vanishing. After relabeling coordinates we may assume that $e$ belongs to the open set where $\det( (\partial f_i / \partial x_j)_{g+1\leq j\leq n})\neq 0$. Now the implicit function theorem guarantees the existence of a non-empty open subset $C\subset R^g$ and a definable function $h:C\ra R^m$ so that $(a_1,\dots, a_g, h(a_1,\dots, a_g))\in A(R)$ for every $(a_1,\dots, a_g)\in C$. As non-empty open subsets in $R^g$ have cardinality $|R|$, this demonstrates at least $|R|$ points of $A(R)$. As the cardinality of $A(R)$ is certainly at most that of $R$, we have $|A(R)|=|R|$. \newline \indent The torsion subgroup $T\subset A(R)$ is at most countable, so $|A(R)/T|=|R|$ since we assume $R$ to be uncountable. Finally, $A(R)/T$ is isomorphic to a subgroup of $A(R)\otimes \bQ$, so $|A(R)\otimes \bQ|=|R|$ as well. The result follows from a simple fact of cardinal arithmetic: if $V$ is a $\bQ$-vector space of uncountable cardinality $\kappa$, then $\dim_{\bQ} V=\kappa$.
+It is known that real closed fields are ``ample" (or ``large" as in Pop \cite{pop}) in the sense of Definition \ref{ample} above: certainly \cite{real}[Proposition 2.9.10] implies this claim; for a more down-to-earth demonstration, one could modify the proof given below to suit the task, for this fact is, at bottom, another consequence of the implicit function theorem. 
+
+\indent As $R$ is ample, Theorem \ref{fehm-petersen} implies that $A(R)$ has infinite rank. If $R$ countable, then so too is $A(R)$ and the result follows. If, on the other hand, $R$ is uncountable, then one may employ the implicit function theorem for real closed fields (as in \cite{real}, Corollary 2.9.8) to find at least $|R|$ points in $A(R)$. Indeed, consider an affine open $U=\Spec(R[x_1,\dots, x_n]/(f_1,\dots, f_m))$ around the identity $e\in A(R)$. As $A$ is smooth, it is a local complete intersection, so we may assume that $n-m=g$. Consider the map $R^n\ra R^m$ given by the $f_i$. Again since $A$ is smooth, the Jacobian matrix $(\partial f_i / \partial x_j)$ has maximal rank $m$ at $e$ and thus there is some $m\times m$ minor of this matrix which is non-vanishing. After relabeling coordinates we may assume that $e$ belongs to the open set where $\det( (\partial f_i / \partial x_j)_{g+1\leq j\leq n})\neq 0$. Now the implicit function theorem guarantees the existence of a non-empty open subset $C\subset R^g$ and a definable function $h:C\ra R^m$ so that $(a_1,\dots, a_g, h(a_1,\dots, a_g))\in A(R)$ for every $(a_1,\dots, a_g)\in C$. As non-empty open subsets in $R^g$ have cardinality $|R|$, this demonstrates at least $|R|$ points of $A(R)$. As the cardinality of $A(R)$ is certainly at most that of $R$, we have $|A(R)|=|R|$. \newline \indent The torsion subgroup $T\subset A(R)$ is at most countable, so $|A(R)/T|=|R|$, since we assume $R$ to be uncountable. Finally, $A(R)/T$ is isomorphic to a subgroup of $A(R)\otimes \bQ$, so $|A(R)\otimes \bQ|=|R|$ as well. The result follows from a simple fact of cardinal arithmetic: if $V$ is a $\bQ$-vector space of uncountable cardinality $\kappa$, then $\dim_{\bQ} V=\kappa$.
 \end{proof}
 
 \begin{proposition}
@@ -55,9 +179,9 @@ Let $R$ be a real closed field, $A/R$ an abelian variety of dimension $g>0$. The
 \begin{proof}
 Arguing exactly as in the proof of Proposition \ref{torsion-alg-closed-transfer}, there is an abelian scheme $\mathcal{A}/S$ with $S$ affine and finite type over $\Spec(\bZ)$ together with an $R$-point $s:\Spec(R)\ra S$ such that the fiber $\mathcal{A}_s/R$ is isomorphic to $A/R$ as an abelian variety over $R$. Now for fixed odd $p$ and fixed natural numbers $n$ and $g$, the statement ``there are exactly $p^{ng}$ elements killed by $p^n$" is a first-order statement in the language of groups which, by Theorem \ref{structure-of-real-AVs}, is known to hold for the fiber over each $\bR$-point of $S$. By Theorem \ref{transfer-theorem}, it must hold for $A$ as well. 
 
-Similarly, the sentence ``for some $0\leq d\leq g$, there are exactly $2^{g+d}$ elements killed by 2" is a first-order sentence in the language of groups which, again by Theorem \ref{structure-of-real-AVs}, is known to hold for the fiber over each $\bR$-point of $S$, and so by Theorem \ref{transfer-theorem}, must hold for $A$ as well. Now, for each $n$, the first-order sentence ``for every $0\leq g\leq d$, if there are exactly $2^{ng+d}$ elements killed by $2^n$, then there are exactly $2^{(n+1)g+d}$ elements killed by $2^{n+1}$" is known to hold for the fiber over each $\bR$-point of $S$ and so again by Theorem \ref{transfer-theorem}, these statements holds for $A$. This sequence of statements amounts to the claim that there is some \emph{fixed} $0\leq d \leq n$ so that for each $n$, $|A[2^n|(R)|=2^{ng+d}$. 
+Similarly, the sentence ``for some $0\leq d\leq g$, there are exactly $2^{g+d}$ elements killed by 2" is a first-order sentence in the language of groups which, again by Theorem \ref{structure-of-real-AVs}, is known to hold for the fiber over each $\bR$-point of $S$, and so by Theorem \ref{transfer-theorem}, must hold for $A$ as well. Now, for each $n$, the first-order sentence ``for every $0\leq g\leq d$, if there are exactly $2^{ng+d}$ elements killed by $2^n$, then there are exactly $2^{(n+1)g+d}$ elements killed by $2^{n+1}$" is known to hold for the fiber over each $\bR$-point of $S$ and so again by Theorem \ref{transfer-theorem}, these statements holds for $A$. This sequence of statements amounts to the claim that there is some \emph{fixed} $0\leq d \leq n$ so that for each $n$, $|A[2^n](R)|=2^{ng+d}$.
 
-As in the case of an algebraically closed field, purely group theoretic considerations now imply that the torsion subgroup of $A$ has the desired form.
+As in the case of an algebraically closed field, purely group-theoretic considerations now imply that the torsion subgroup of $A$ has the desired form. Indeed, every torsion group is a direct sum of its $p$-power torsion subgroups and the counts given above, together with the fundamental theorem of finite abelian groups, give $A(R)[\tors]$ the desired form.
 \end{proof}
 
 NOTE: I think we came up with a proof of this fact that doesn't require the model theory, at least when $A$ is principally polarized. It was something like ``look at the action of conjugation on the $\bZ/p\bZ$-vector space $A[p](R(\sqrt{-1}))$ and use the Weil pairing." Should we include this?
@@ -72,17 +196,27 @@ The above proposition shows that the torsion subgroup $T$ of $A$ is a divisible 
 Let $R$ be a real closed field, $p$ an odd prime, and $A/R$ an abelian variety of dimension $g$. Then the Tate module $T_p(A)$ is a free $\bZ_p[G]$-module of rank $g$ where $G=\Gal(R(\sqrt{-1})/R)$.
 \end{corollary}
 \begin{proof}
-This follows immediately from the description of $A[p^n](R)$ above.
+As $A$ is defined over $R$, $T_p(A)$ comes equipped with an action of $\Gal(R(\sqrt{-1})/R)=:G$. Let us denote the action of the nontrivial element $\sigma\in G$ on $T_p(A)$ by $\overline{P}:=\sigma(P)$ (see Theorem \ref{artin-schreier}, condition 4). It suffices to produce $P_1,\dots P_g, Q_1,\dots Q_g\in T_p(A)$ with $\overline{P_i}=P_i$ and $\overline{Q_j}=-Q_j$ for $1\leq i,j\leq g$ such that $$T_p(A)=\bigoplus_{i=1}^g (\bZ_p\cdot P_i)\oplus\bigoplus_{j=1}^g (\bZ_p\cdot Q_j).$$ Indeed, for fixed $i=1,\dots,g$ the $\bZ_p[\bZ/2\bZ]$-module $\bZ_p\cdot P_i\oplus\bZ_p \cdot Q_i$ is free with basis $\{P_i+Q_i,P_i-Q_i\}$ --- notice here we crucially use the fact that $p\neq 2$: the matrix 
+$$\begin{bmatrix} 
+1 & 1\\
+1 & -1
+\end{bmatrix}$$
+is invertible over $\bZ_p$, but not over $\bZ_2$! We construct the $P_i$ and $Q_j$ by lifting inductively from $\bZ/p\bZ$. 
+
+$\sigma$ is an involution on the $2g$-dimensional $\bZ/p\bZ$-vector space $A[p]$. $\sigma$ is diagonalizable, again using the fact that $p\neq 2$; we thus split $A[p]$ into a $+1$- and $-1$-eigenspace, identifying the former with $A[p](R)$. By Theorem \ref{structure-of-realclosed-AVs}, each is of dimension $g$ (over $\bZ/p\bZ)$, so $A[p]$ has a $\bZ/p\bZ$-basis $P_{1,1},\dots, P_{1,g},Q_{1,1},\dots, Q_{1,g}$ with $\overline{P_{1,i}}=P_{1,i}$ and $\overline{Q_{1,j}}=-Q_{1,j}$; this is the desired structure, modulo $p$. Suppose now we have the desired decomposition $$A[p^n]=\bigoplus_{i=1}^g(\bZ/p^n\bZ)\cdot P_{n,i}\oplus \bigoplus_{j=1}^g(\bZ/p^n\bZ)\cdot Q_{n,j}$$ for $n\geq 1$. Fix $1\leq i\leq g$. As the multiplication-by-$p$ morphism has degree $p^{2g}$ (Proposition \ref{torsion-alg-closed}), $[p]^{-1}(P_{n,i})$ has $p^{2g}$ elements. Moreover, $[p]^{-1}(P_{n,i})$ is a $G$-set with the obvious action of $\sigma$. Since $[p]^{-1}(P_{n,i})$ is partitioned by the $G$-orbits and $p^{2g}$ is odd (\emph{again} using that $p\neq 2$), some element must have an orbit of size 1, i.e. there is some $P_{n+1,i}\in A[p^{n+1}](R)$ with $[p](P_{n+1,i})=P_{n,i}$. Essentially the same argument works to produce $Q_{n+1,j}$ with $[p](Q_{n+1,j})=Q_{n,j}$ and $\overline{Q_{n+1,j}}=-Q_{n+1,j}$, but here we have $\sigma$ act on $[p]^{-1}(Q_{n,j})$ with a twist by $-1$. (NOTE: am i using the word "twist correctly"? I mean that if $S\in [p]^{-1}(Q_{n,j})$, then $\sigma\cdot S:=-\sigma(S)$. Also, this is just the action of $G$ on the ``twisted" abelian variety you get via Galois descent; should I mention this?) That the $P_{n+1,i}$ and $Q_{n+1,j}$ are $\bZ/p^{n+1}\bZ$-linearly independent and span $A[p^{n+1}]$ follows immediately. In this way we form a compatible system of representatives so that the $P_i=(P_{n,i})_{n=1}^{\infty}$ and $Q_j=(Q_{n,j})_{n=1}^{\infty}$ have the desired properties.
+%we can probably figure out the possibilities for Z_2: spilt into cases 1. the min poly mod 2 is (x-1), 2. the min poly mod 2 is (x-1)^2. does our lifting strategy work just as well? maybe this is where you get some Q_2*/(Q_2^*)^2 stuff
 \end{proof}
 
-The final result of this section examines how the isomorphism type of the group of rational points of a real abelian variety varies in a family. The structure theorem proved above demonstrates that this isomorphism type is entirely determined by the number of 2-torsion points, giving evidence to suggest that this isomorphism type should be locally constant. As an illustrative example, consider the family $\mathcal{E}\ra \Spec(\bZ[a,b][1/(4a^3+27b^2)])=S$, where $\mathcal{E}$ is the closed subscheme of $\bP^2\times S$ cut out by $Y^2Z=X^3+aXZ^2+bZ^3$. One notices that the elliptic curves with \emph{connected} real locus (hence, exactly two 2-torsion points) occur over the fibers with $4A^3+27B^2>0$, and that those with \emph{disconnected} real locus (hence, exactly four 2-torsion points) occur over the fibers with $4A^3+27B^2<0$. We show that this is a more general phenomenon.
+The final result of this section examines how the isomorphism type of the group of rational points of a real abelian variety varies in a family. The structure theorem proved above demonstrates that this isomorphism type is entirely determined by the number of 2-torsion points, indicating a possible avenue of approach. As an illustrative example, let us return again to our favorite family $\mathcal{E}\ra \Spec(\bZ[a,b][1/(4a^3+27b^2)])$. One notices that the elliptic curves with a \emph{connected} real locus occur over the fibers with $4a^3+27b^2>0$; such curves have two real 2-torsion points and, as real Lie groups, each is isomorphic to the 1-dimensional torus $\bR/\bZ$. Those elliptic curves with $4a^3+27b^2<0$ have a \emph{disconnected} real locus; they have four real 2-torsion points and each is isomorphic to $\bR/\bZ\times\bZ/2\bZ$ as a real Lie group.
 
 \begin{proposition}
 \label{deformation}
-Let $\mathcal{A}\ra S$ be an abelian scheme of dimension $g$ with $S$ of finite type over a real closed field $R$. Then the function $S(R)\ra \bN$ sending $s\in S(R)$ to $|\mathcal{A}_s[2](R)|$ is locally constant with respect to the order topology on $S(R)$ inherited from the ordering on $R$. In particular, the isomorphism class of the fiber (as an abelian group) is constant on the connected components of $S(R)$ (in the order topology).
+Let $\mathcal{A}\ra S$ be an abelian scheme of dimension $g$ with $S$ of finite type over a real closed field $R$. Then the function $S(R)\ra \bN$ sending $s\in S(R)$ to $|\mathcal{A}_s[2](R)|$ is locally constant with respect to the order topology on $S(R)$ inherited from the ordering on $R$. In particular, the isomorphism class of the fiber (as an abelian group) is constant on the connected components of $S(R)$.
 \end{proposition}
 \begin{proof}
-We seek to apply a suitable version of the following elementary fact from the theory of real manifolds, whose proof (as in \cite{milnor}) is a simple application of the inverse function theorem: let $f:M\ra N$ be a smooth map between real manifolds of the same dimension with $M$ compact. If $U$ is the (open) subset of $N$ consisting of regular values, then the function $U\rightarrow \bN$ which sends $y\in U$ to $|f\inv(y)|$ is locally constant. 
+We seek to apply a suitable version of the following elementary fact from the theory of real manifolds, whose proof is a simple application of the inverse function theorem: let $f:M\ra N$ be a smooth map between real manifolds of the same dimension with $M$ compact; if $U$ is the (open) subset of $N$ consisting of regular values, then the function $U\rightarrow \bN$ which sends $y\in U$ to $|f\inv(y)|$ is locally constant, ``i.e. there is a neighborhood $V\subset N$ of $y$ such that $|f\inv(y')|=|f\inv(y)|$ for any $y'\in V$. [Indeed,] let $x_1,\dots, x_k$ be the points of $f\inv(y)$, and choose pairwise disjoint neighborhoods $U_1,\dots, U_k$ of these which are mapped diffeomorphically onto neighborhoods $V_1,\dots, V_k$ in $N$. We may then take $V=V_1\cap V_2\cap \cdots \cap V_k- f(M- U_1-\cdots- U_k)."$ \cite[pg. 8]{milnor}
 
-Now, the 2-torsion subgroup scheme $\mathcal{A}[2]$ is \'etale over $S$, as it is the pullback of the \'etale morphism $[2]:\mathcal{A}\ra A$. For each $s\in S(R)$, the set $\mathcal{A}_s[2](R)$ is finite and non-empty by Theorem \ref{structure-of-realclosed-AVs}, so at the level of $R$-points, we have a surjective \'etale morphism $\mathcal{A}[2](R)\ra S(R)$ (where an \'etale morphism of algebraic sets is a regular morphism which induces an isomorphism of tangent spaces). A definable version of the inverse function theorem is used in \cite[Proposition 8.1.2]{real} to conclude that $\mathcal{A}[2](R)\ra S(R)$ is a local diffeomorphism. The first result now follows from the exact same argument as in the case of real manifolds. The isomorphism class of a real abelian variety (as an abelian group) is completely determined by its 2-torsion subgroup, so the second statement follows.
+An \'etale morphism of varieties is the algebraic analogue of a local diffeomorphism. The inverse function theorem fails in the coarse Zariski topology, but as it holds for the order topology on a real closed field, it should come as no surprise that an \'etale morphism of varieties $f:V\ra W$ induces a local diffeomorphism of real algebraic sets $f:V(R)\ra W(R)$ \cite[Proposition 8.1.2]{real}.
+
+Now, the 2-torsion subgroup scheme $\mathcal{A}[2]$ is \'etale over $S$, as it is the pullback of the \'etale morphism $[2]:\mathcal{A}\ra \mathcal{A}$. At the level of $R$-points, we have local diffeomorphism $\mathcal{A}[2](R)\ra S(R)$. The fiber over each point of the base if finite and non-empty by Theorem \ref{structure-of-realclosed-AVs}, so the exact same proof given in the first paragraph yields that the number of 2-torsion points in the fiber over each point of the base $S(R)$ is locally constant. The isomorphism class of a real abelian variety (as an abelian group) is completely determined by its 2-torsion subgroup (Theorem \ref{structure-of-realclosed-AVs}), so the second statement follows.
 \end{proof}

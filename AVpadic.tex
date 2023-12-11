@@ -1,31 +1,82 @@
 \externaldocument{intro}
 
 \chapter{Abelian varieties over $p$-adically closed fields}
-Next, we apply the transfer principle to abelian varieties over $p$-adically closed fields.
+
+% Michael's comments on the first draft:
+%The same issues come up for p-adic closed fields.  In Def. 3.0.1, what does \dim O/p mean?  I assume it means dimension as a vector space over the field with p elements, but you do not say this. What is a p-valued algebraic extension?  Do you assume it is unramified?  Because otherwise, it seems that \Q_p itself is not p-adically closed.  And why should we believe that any such fields exist other than \Q_p?  The language of valued fields is a staple of model theory, but it isn't well known to, for example, algebraic geometers or number theorists.  When you speak of an extension of a divisible group by Z with the lexicographic order, there are two possible lexicographic orders.  Which one do you mean?
+%
+%Higher dimensional formal group laws.  The vast majority of discussion of formal group laws concerns the 1-dimensional case.  You should say what g-dimensional FGLs are and how they arise from g-dimensional algebraic groups.  Serre is a good reference and can help you do this, but there is something wrong in what you wrote, I think, since I believe A^i/A^{i+1} should be a g-dimensional vector space.
+
+Next, we apply the transfer principle to abelian varieties over $p$-adically closed fields. We begin with a detailed discussion of $p$-adically closed fields.
+
+\section{$p$-adically closed fields}
+
+The canonical reference for this material is \cite{formallyp-adic}, which begins with the statement ``The notion of a $p$-adically closed field axiomatizes the algebraic properties of the $p$-adic number field $\bQ_p$ in the same way as the notion of a real closed field axiomatizes the algebraic properties of the real number field $\bR$." Moreover, the theory of $p$-adically closed fields is developed in complete analogy with that of real closed fields: $p$-valued fields play the role of ordered fields (these are fields that possess valuations of a certain $p$-adic flavor to be discussed below); their maximal $p$-valued algebraic extensions are dubbed \emph{$p$-adically closed} fields; one can axiomatize the theory of $p$-adically closed fields in the language of valued fields $\mathcal{L}_{div}=\mathcal{L}_r\cup\{\mid\}$ and this theory is model complete; Hensel's lemma turns out to be the $p$-adic analogue of the intermediate value theorem for polynomials, while the analogue of the fact that every positive element has a square root over a real closed field reveals itself in a divisibility condition on the value group.
+
+Let us begin with a definition.
 
 \begin{definition}
-Let $(K,v)$ be a valued field of characteristic zero with valuation ring $\mathcal{O}$ such that the residue field has characteristic $p>0$. 
-\begin{enumerate}
-\item $K$ is called a \emph{p-valued field} of $p$-rank $d$ if $\dim \mathcal{O}/p=d$.
-\item A $p$-valued field is said to be \emph{p-adically closed} if it does not admit any proper $p$-valued algebraic extensions of the same $p$-rank.
-\end{enumerate}
+Let $(K,v)$ be a valued field of characteristic zero with valuation ring $\mathcal{O}$ such that the residue field has characteristic $p>0$. $K$ is called a \emph{p-valued field} of $p$-rank $d$ if $\dim \mathcal{O}/p=d$, where the dimension is to be understood over the prime field $\bZ/p\bZ$.
 \end{definition}
 
-The following proposition characterizes $p$-adically closed fields in a more useful way \cite{formallyp-adic}:
+For the remainder of this thesis, the term ``$p$-valued field" is always used to refer to a $p$-valued field of rank 1.
 
-\begin{proposition}
-A $p$-valued field $K$ of $p$-rank 1 is $p$-adically closed if it satisfies any of the following equivalent conditions:
+\begin{example}
+	\begin{enumerate}
+		\item $\bQ_p$ with its $p$-valuation $v_p$ is a $p$-valued field. Of course, the restriction of $v_p$ to any subfield of $\bQ_p$ gives another $p$-valued field.
+		\item Let $(K,v)$ be $p$-valued. We can define a $p$-valuation $w$ on the field of rational functions $K(t)$ that extends $v$; $w$ takes values in $\bZ\times v(K)$ ordered lexicographically, i.e. $(a,b)<(a',b')$ if $a<a'$ or $(a=a'$ and $b<b')$. For $f(t)\in K[t]$, we define $w(f):=(n,v(a_n))$, where $a_nt^n$ is the lowest-order term of $f$. We extend $w$ to $K(t)$ in the obvious way.
+		\item We can extend $w$ from the previous example to the field of Puiseux series $K\langle\langle t\rangle\rangle$. For $f=\sum_{i=k}^{\infty} a_it^{i/N}$ and $a_k\neq 0$, we set $w(f):=(k/N, v(a_k))$, now taking values in $\bQ\times v(K)$.
+	\end{enumerate}
+\end{example}
+
+Again, we are led naturally to consider maximal algebraic extensions of $p$-valued fields. 
+\begin{definition}
+Let $K$ be a $p$-valued field. $K$ is called \emph{$p$-adically closed} if $K$ does not admit any proper $p$-valued algebraic extensions.
+\end{definition}
+
+\begin{example}
+	\begin{itemize}
+		\item $\bQ_p$ is $p$-adically closed.
+		\item The field of $p$-adic algebraic numbers $\bar{\bQ}\cap \bQ_p$ is $p$-adically closed.
+		\item The field of Puiseux series $\bQ_p\langle\langle t\rangle\rangle$ is $p$-adically closed.
+	\end{itemize}
+\end{example}
+
+A valued field $(K,v)$ can be realized as a $\mathcal{L}_{div}$-structure by interpreting $x\mid y$ iff $v(x)\leq v(y)$. As stated above, the theory of $p$-adically closed fields will turn out to be a model complete $\mathcal{L}_{div}$-theory, but the definition of a $p$-adically closed field given above \emph{a priori} cannot be captured in first-order logic. This seeming issue is resolved by the following
+
+\begin{theorem}
+A valued field $K$ is $p$-adically closed if and only if $K$ is Henselian and its value group is a $\bZ$-group, meaning $v(K)$ is an extension of a divisible group by $\bZ$, ordered lexicographically.
+\end{theorem}
+\begin{proof}
+\cite[Theorem 3.1]{formallyp-adic}
+\end{proof}
+
+\begin{remark}
+A $\bZ$-group is a model of Presburger arithmetic, i.e. an  ordered abelian group with the same theory (= set of true sentences) as $(\bZ,0,1,+,<)$.
+\end{remark}
+
+That $K$ is Henselian and that the value group has the desired divisibility property can indeed be captured in (infinitely many) $\mathcal{L}_{div}$-sentences. Thus we define $\catname{pCF}$ to be the $\mathcal{L}_{div}$-theory consisting of sentences corresponding to
 \begin{itemize}
-	\item $K$ does not admit any proper $p$-valued algebraic extensions of rank 1.
-	\item $K$ is Henselian and its value group is a $\bZ$-group, i.e. the value group is an extension of a divisible group by $\bZ$ with the lexicographical ordering
-	\item $K$ is elementarily equivalent to $\bQ_p$, in the sense that if $\phi$ is any sentence in the language of valued fields (i.e. the language of fields together with an additional (unary) predicate that interprets the valuation ring), then $K\models \phi$ if and only if $\bQ_p\models \phi$.
+	\item the axioms of a valued field of characteristic zero,
+	\item the residue field is (isomorphic to) $\bZ/p\bZ$,
+	\item the field is Henselian,
+	\item the value group is a $\bZ$-group.
 \end{itemize}
-\end{proposition}
+TODO: add the actual sentences
 
-For the remainder of this thesis, when we speak of $p$-adically closed fields, we implicitly assume them to be of $p$-rank 1.
+As mentioned above, $\catname{pCF}$ is model complete:
+
+\begin{theorem}
+Let $K$ be $p$-adically closed. For any $\mathcal{L}_{div}$-sentence $\phi$, $K\models \phi$ iff $\bQ_p\models \phi$.
+\end{theorem}
+\begin{proof}
+\cite[Theorem 5.1]{formallyp-adic}
+\end{proof}
 
 \section{Abelian varieties over $\bQ_p$}
 The result in this section can be found, for instance, in \cite{clark2019there}. We reproduce the proof to illustrate it's $p$-adic analytic nature, once again highlighting Weil's philosophy of the Lefschetz principle.
+
+TODO: g-dimension formal group law associated to g-dimensional algebraic group. apparently this can be found in serre
 
 \begin{theorem}
 \label{structure-of-padic-AVs}

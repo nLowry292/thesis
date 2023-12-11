@@ -159,9 +159,9 @@ The impetus for this thesis is to give a formal justification for the use of the
 
 
 \section{Model Theory}
-Model theory is, in short, the mathematical study of the relationship between \emph{syntax} and \emph{semantics}, i.e. between language and meaning. Formal systems of language and theory are studied via their models, which are the structures which give meaning (and importantly, \emph{truth}) to the formal symbols of language. Model theory is quite a recent development in mathematics. Its philosophical roots can be traced back to late nineteenth- and early twentieth-century works of Frege and Russel, but it was Tarski who developed model theory as a mathematical discipline in its own right in the 1950s.
+Model theory is, in short, the mathematical study of the relationship between \emph{syntax} and \emph{semantics}, i.e. between language and meaning. Formal systems of language and theory are studied via their models, which are the structures which give meaning (and importantly, \emph{truth}) to the formal symbols of language. Model theory is quite a recent development in mathematics. Its philosophical roots can be traced back to late nineteenth- and early twentieth-century works of Frege and Russel and the mid-twentieth-century works of the French structuralists, but it was Tarski who developed model theory as a mathematical discipline in its own right in the 1950s.
 
-The relationship between syntax and semantics is no stranger to the algebraic geometer. The fundamental duality of algebraic geometry is one of this nature: polynomial equations (syntax) and the corresponding set of solutions (semantics). One should not be surprised to then learn of the many varied applications of model-theoretic ideas to mainstream algebraic geometry: look no further than this very paper! See also the recent and celebrated proof of the Andr\'e-Oort conjecture \cite{pila2022canonical}.
+The relationship between syntax and semantics is no stranger to the algebraic geometer. The fundamental duality of algebraic geometry is one of this nature: polynomial equations (syntax) and the corresponding set of solutions (semantics). One should not be surprised to learn of the many varied applications of model-theoretic ideas to mainstream algebraic geometry: look no further than this very paper! See also the recent and celebrated proof of the Andr\'e-Oort conjecture \cite{pila2022canonical}.
 
 Let us begin with a definition:
 
@@ -194,7 +194,7 @@ An $\mathcal{L}$-structure $\mathcal{M}$ is specified by the following data:
 	\item a relation $R^{\mathcal{M}}\subset M^{n_R}$ for each relation symbol $R\in\mathcal{R}$ of arity $n_R$.
 	\item an element $c^{\mathcal{M}}\in M$ for each constant symbol $c\in\mathcal{C}$.
 \end{itemize}
-$f^{\mathcal{M}}$, $R^{\mathcal{M}}$, and $c^{\mathcal{M}}$ are called \emph{interpretations} of the symbols $f, R$, and $c$ in $M$. The Roman letters $A,B,C,\dots,$ always refer to the underlying universe of the $\mathcal{L}$-structure $\mathcal{A},\mathcal{B},\mathcal{C},\dots,$.
+$f^{\mathcal{M}}$, $R^{\mathcal{M}}$, and $c^{\mathcal{M}}$ are called \emph{interpretations} of the symbols $f, R$, and $c$ in $M$. The Roman letters $A,B,C,\dots,$ always refer to the underlying universe of the $\mathcal{L}$-structure $\mathcal{A},\mathcal{B},\mathcal{C},\dots$.
 \end{definition}
 
 \begin{example}
@@ -217,14 +217,14 @@ A homomorphism $\phi:\mathcal{M}\ra \mathcal{N}$ of $\mathcal{L}$-structures is 
 If, furthermore, for every $n$-ary relation symbol $R\in\mathcal{R}$, we have $(a_1,\dots, a_n)\in R^{\mathcal{M}}$ \emph{if and only if} $(\phi(a_1),\dots, \phi(a_n))\in R^{\mathcal{N}}$, then we say $\phi$ \emph{reflects} $\mathcal{R}$. An injective homomorphism $\phi$ which reflects $\mathcal{R}$ is called an \emph{embedding}; a surjective embedding is called an \emph{isomorphism}.
 \end{definition}
 
-We can use the language $\mathcal{L}$ together with logic symbols (variables $x_1,x_2,x_3,\dots$, equality $=$, Boolean connectives $\top, \bot, \wedge, \vee, \neg, \implies, \iff$, existential and universal quantifiers $\forall$ and $\exists$,, and parentheses) to create \emph{formulas} that describe certain properties of $\mathcal{L}$-structures. For example, an abelian group $A$ is an $\mathcal{L}_g$-structure for which the (interpretation of the) formula $\forall x \forall y( x\cdot y = y\cdot x)$ is true. We proceed by formalizing the intuitive notion of a formula:
+We can use the language $\mathcal{L}$ together with logic symbols (variables $x_1,x_2,x_3,\dots$, equality $=$, Boolean connectives $\top, \bot, \wedge, \vee, \neg, \implies, \iff$, existential and universal quantifiers $\forall$ and $\exists$, and parentheses) to create \emph{formulas} that describe certain properties of $\mathcal{L}$-structures. For example, an abelian group $A$ is an $\mathcal{L}_g$-structure for which the (interpretation of the) formula $\forall x \forall y( x\cdot y = y\cdot x)$ is true. We proceed by formalizing the intuitive notion of a formula:
 
 \begin{definition}
 The set of $\mathcal{L}$-terms is the smallest set $\mathcal{T}$ such that 
 \begin{enumerate}
 	\item $c\in \mathcal{T}$ for each constant symbol $c\in\mathcal{C}$
 	\item $x_i\in \mathcal{T}$ for each variable $x_i$, $i=1,2,3,\dots$
-	\item if $t_1,\dots, t_n\in\mathcal{T}$ and $f\in\mathcal{F}$ is an $n$-ary function symbol, then $f(t_1,\dots, t_n)\in\mathcal{T}$
+	\item If $t_1,\dots, t_n\in\mathcal{T}$ and $f\in\mathcal{F}$ is an $n$-ary function symbol, then $f(t_1,\dots, t_n)\in\mathcal{T}$
 \end{enumerate} 
 \end{definition}
 
@@ -256,6 +256,7 @@ An $\mathcal{L}$\emph{-formula} is one of the following:
 	\item $\phi\vee \psi$, $\phi\wedge \psi$, or $\neg\phi$, where $\phi$ and $\psi$ are formulas
 	\item $\exists x \hspace{0.1cm}\phi(x)$ or $\forall x \hspace{0.1cm}\phi(x)$, where $\phi$ is a formula
 \end{itemize}
+A formula with no free variables is called a \emph{sentence}.
 \end{definition}
 
 Again, this definition is recursive so that we obtain a method of proof by induction on the complexity of $\mathcal{L}$-formulae.
@@ -289,68 +290,140 @@ Let $\mathcal{M}$ be an $\mathcal{L}$-structure. Let $\phi$ be an $\mathcal{L}$-
 	\begin{itemize}
 		\item Let $\phi$ be the $\mathcal{L}_r$-formula $\exists x (x^2=-1)$. Then $\bC\models \phi$, while $\bR\not\models \phi$
 		\item Let $\phi$ be the $\mathcal{L}_g$-formula $\forall x\forall y(xy=yx)$. The abelian groups are precisely the groups $A$ for which $A\models \phi$. (Of course, there are also $\mathcal{L}_g$-structures which are not groups at all which still satisfy $\phi$: consider $\bN$ with the binary operation $+$ and distinguished element $10$).
-		\item Let $\phi(y)$ be the $\mathcal{L}_{or}$-formula $\exists x(x^2=y)$. Then $\bR\models\phi(2)$, while $\bR\not\models\phi(2)$.
+		\item Let $\phi(y)$ be the $\mathcal{L}_r$-formula $\exists x(x^2=y)$. Then $\bR\models\phi(2)$, while $\bQ\not\models\phi(2)$.
 	\end{itemize}
 \end{example}
 
 Given a fixed $\mathcal{L}$-formula $\phi(x_1,\dots, x_n)$ and an $\mathcal{L}$-structure $\mathcal{M}$, one can study the subset of tuples $(a_1,\dots, a_n)\in M^n$ for which $M\models \phi(a_1,\dots, a_n)$. The study of such subsets is the cornerstone of model theory:
 
 \begin{definition}
-Let $\mathcal{M}$ be an $\mathcal{L}$-structure. We say that a subset $X\subset M^n$ is \emph{definable} if there is an $\mathcal{L}$-formula $\phi(x_1,\dots, x_n, y_1,\dots, y_m)$ and a tuple $\bar{b}=(b_1,\dots, b_m)\in M^m$ such that $$X=\{\bar{a}\in M^n: M\models \phi(\bar{a},\bar{b})\}.$$ The elements of the tuple $\bar{b}$ are called the \emph{parameters} of the definable set.
+Let $\mathcal{M}$ be an $\mathcal{L}$-structure. We say that a subset $X\subset M^n$ is \emph{definable} if there is an $\mathcal{L}$-formula $\phi(x_1,\dots, x_n, y_1,\dots, y_m)$ and a tuple $\bar{b}=(b_1,\dots, b_m)\in M^m$ such that $$X=\{\bar{a}\in M^n: M\models \phi(\bar{a},\bar{b})\}.$$ The elements of the tuple $\bar{b}$ are called the \emph{parameters} of the definable set. 
 \end{definition}
 
 \begin{example}
-Classical (affine) algebraic varieties are definable in the language $\mathcal{L}_r$. Indeed, if $V$ is the common zero-locus of the ideal $I=(f_1,\dots, f_n)\subset k[x_1,\dots,x_m]$, then $V$ is defined by the formula $$\bigwedge_{i=1}^n f_i(x_1,\dots, x_n)=0.$$ Notice that this is a formula with parameters given by the coefficients of the $f_i$. As a concrete example, the variety $V\subset\bR^2$ cut out by the equation $x^2-\pi y^2+1=0$ is defined by the $\mathcal{L}_r$-formula $\phi(x,y,z): x^2-zy^2+1=0$ with parameter $z=\pi$, i.e. $$V=\{(a,b)\in\bR^2: \bR\models\phi(a,b,\pi)\}.$$
+Classical (affine) algebraic varieties are definable in the language $\mathcal{L}_r$. Indeed, if $V$ is the common zero-locus of the ideal of functions $I=(f_1,\dots, f_n)\subset k[x_1,\dots,x_m]$, then $V$ is defined by the formula $$\bigwedge_{i=1}^n f_i(x_1,\dots, x_n)=0.$$ Note that this is a formula with parameters given by the coefficients of the $f_i$. As a concrete example, the variety $V\subset\bR^2$ cut out by the equation $x^2-\pi y^2+1=0$ is defined by the $\mathcal{L}_r$-formula $\phi(x,y,z): x^2-zy^2+1=0$ with parameter $z=\pi$, i.e. $$V=\{(a,b)\in\bR^2: \bR\models\phi(a,b,\pi)\}.$$
 \end{example}
+
+Given a language $\mathcal{L}$, we most often consider not just arbitrary $\mathcal{L}$-structures, but rather $\mathcal{L}$-structures that satisfy certain extra requirements, and typically these extra requirements can be formulated themselves in the given language. For example, the axioms of a group are all sentences in the language of groups $\mathcal{L}_g$. This leads us to the following
+
+\begin{definition}
+An $\mathcal{L}$-\emph{theory} $T$ is a set of $\mathcal{L}$-sentences (recall that a \emph{sentence} is a formula with no free variables). A $\mathcal{L}$-structure $\mathcal{M}$ is called a \emph{model} of $T$ if $M\models \phi$ for all $\phi\in T$. If $\phi$ is any sentence, then we say $T$ \emph{entails} $\phi$, written $T\models \phi$ if every model of $T$ satisfies $\phi$.
+\end{definition}
+
+\begin{example}
+	\begin{enumerate}
+		\item The theory of groups $T_g$ consists of the $\mathcal{L}_g$-sentences\vspace{-.2cm}
+			\begin{center}
+			$\forall x\forall y\forall z (x\cdot(y\cdot z) = (x\cdot y)\cdot z)$\\
+			$\forall x (x\cdot e = x\wedge e\cdot x = x)$\\
+			$\forall x \exists y (x\cdot y = e\wedge y\cdot x = e)$
+			\end{center}
+$T_g\models \forall x\forall y\forall z (x\cdot y = x\cdot z\implies y=z)$ since every group has left cancellation. On the other hand, $T_g\not\models \forall x\forall y (x\cdot y = y\cdot x)$ since there are non-abelian groups.
+		\item The theory of algebraically closed fields of characteristic zero $\catname{ACF}_0$ consists of the field axioms together with the $\mathcal{L}_r$-sentences $$\forall a_0\dots \forall a_{n-1}\exists x (x^n + \sum_{i=0}^{n-1}a_i x^i=0)$$ for each $n=1,2,\dots$ and the sentences $p\neq 0$ for each prime $p$.
+	\end{enumerate}
+\end{example}
+
+\begin{definition}
+An $\mathcal{L}$-theory $T$ is said to be \emph{model complete} if it is satisfiable (i.e. it has a model) and for every $\mathcal{L}$-sentence $\phi$, either $T\models \phi$ or $T\models \not\phi$. 
+\end{definition}
+
+We have just seen that the theory of groups is not model complete. On the other hand, the theory of algebraically closed fields of characteristic zero turns out to be model complete. We will also see later that the theory of real closed fields and the theory of $p$-adically closed fields are both model complete.
+
+The most useful characterization of model complete theories is that an $\mathcal{L}$-theory $T$ (for our purposes) is that any two models of $T$ are \emph{elementarily equivalent}, i.e. if $\mathcal{M}$ and $\mathcal{N}$ are models of $T$ and if $\phi$ is any $\mathcal{L}$-sentence, then $M\models \phi$ if and only if $N\models \phi$.
 
 We have thus set up the necessary language to describe an \emph{interpretation} of one structure in another (not to be confused with the interpretation of the symbols in an $\mathcal{L}$-structure):
 
 %interpretation%
 \begin{definition}
-An interpretation of an $L$-structure $M$ in an $L'$-structure $N$ consists of
+An interpretation of an $\mathcal{L}$-structure $\mathcal{M}$ in an $\mathcal{L}'$-structure $\mathcal{N}$ consists of
 \begin{itemize}
-\item an $L'$-definable set $D\subset N^n$,
-\item an $L'$-definable equivalence relation $\sim$ on $D$
-\item for each $k$-ary function symbol in $L$, an $L'$-definable function $(D/\sim)^k\ra (D/\sim)$,
-\item for each $k$-ary relation symbol in $L$, an $L'$-definable subset of $(D/\sim)^k$,
+\item an $\mathcal{L}'$-definable set $D\subset N^n$,
+\item an $\mathcal{L}'$-definable equivalence relation $\sim$ on $D$
+\item for each $k$-ary function symbol in $\mathcal{L}$, an $\mathcal{L}'$-definable function $(D/\sim)^k\ra (D/\sim)$,
+\item for each $k$-ary relation symbol in $\mathcal{L}$, an $\mathcal{L}'$-definable subset of $(D/\sim)^k$
+\item for each constant symbol in $\mathcal{L}$, an element of $(D/\sim)$
 \end{itemize}
-such that the resulting $L$-structure on $D/\sim$ is isomorphic to $M$.
+such that the resulting $\mathcal{L}$-structure $\mathcal{D}$ with domain $D/\sim$ is isomorphic to $\mathcal{M}$.
 \end{definition}
 
-As one would expect, when an $L$-structure $M$ is interpretable in an $L'$-structure $N$, one can also translate $L$-formulas into $L'$-formulas in a way that respects this interpretation:
+As one might expect, when an $\mathcal{L}$-structure $\mathcal{M}$ is interpretable in an $\mathcal{L}'$-structure $\mathcal{N}$, one can translate $\mathcal{L}$-formulas into $\mathcal{L}'$-formulas in a truth-preserving way:
 
 \begin{proposition}
-Let $M$ be an $L$-structure which is interpretable in an $L'$-structure $N$. For any first-order $L$-formula $\phi(x_1,\dots, x_k)$, there is a first-order $L'$ formula $\psi(y_1,\dots, y_k)$ (where each $y_i$ is an $n$-tuple of variables) such that for all $a_1,\dots, a_k\in D$, $N\models \psi(a_1,\dots, a_k)$ if and only if $M\models \phi(f([a_1]_{\sim}), \dots, f([a_k]_{\sim}))$, where $f:(D/\sim)\ra M$ is the isomorphism.
+Let $\mathcal{M}$ be an $\mathcal{L}$-structure which is interpretable in an $\mathcal{L}'$-structure $\mathcal{N}$ and let $\mathcal{D}$ be the $\mathcal{L}'$ For any first-order $\mathcal{L}$-formula $\phi(x_1,\dots, x_k)$, there is a first-order $\mathcal{L}'$ formula $\psi(y_1,\dots, y_k)$ (where each $y_i$ is an $n$-tuple of variables) such that for all $a_1,\dots, a_k\in D$, $N\models \psi(a_1,\dots, a_k)$ if and only if $M\models \phi(f([a_1]_{\sim}), \dots, f([a_k]_{\sim}))$, where $f:\mathcal{D}\ra \mathcal{M}$ is the isomorphism.
 \end{proposition}
+\begin{proof}
+This is a simple proof by induction on the complexity of $\phi$. NOTE: perhaps I should prove this to demonstrate the technique?
+\end{proof}
 
-As is typical in model theory, one can further speak of interpretations \emph{with parameters} and prove and analogous set of propositions about such interpretations. 
+\begin{example}
+	\begin{itemize}
+		\item One can interpret the $\mathcal{L}_r$-structure $\bQ$ in the $\mathcal{L}_r$-structure $\bZ$ as follows (in fact, this is typically how $\bQ$ is \emph{defined}): let $D\subset \bZ^2$ be the definable subset given by the formula $\phi(x,y): y\neq 0$ and consider the equivalence relation $(a,b)\sim (c,d)$ iff $ad=bc$; addition, subtraction, and multiplication are defined on $(D/\sim)$ in the familiar way, e.g. $[(a,b)]_{\sim}+[(c,d)]_{\sim} = [(ad+bc, bd)]_{\sim}$; 0 and 1 are represented by the classes $[(0,1)]_{\sim}$ and $[(1,1)]_{\sim}$, respectively. Then the homomorphism $f:(D/\sim)\ra \bQ$ given by $f([(a,b)]_{\sim})=a/b$ is an isomorphism of $\mathcal{L}_r$-structures. Now consider the $\mathcal{L}_r$-sentence $\phi$ given by $\forall x\forall y(x+y=y+x)$. Our interpretation of $\bQ$ in $\bZ$ allows us to ``translate" $\phi$ into the $\mathcal{L}_r$-sentence $\psi$ given by $$\forall a\forall b\forall c\forall d((b\neq 0\and d\neq 0)\implies (ad+bc)db=bd(cb+da))$$ 
+		\item Consider the affine group scheme $G=\Spec(k[x]/(x^2-1))$, where $k$ is a field of characteristic not equal to 2. Its group of $k$-points constitute an $\mathcal{L}_g$-structure (isomorphic to $\bZ/2\bZ$). We can use the algebraic-geometry-commutative-algebra duality to interpret this group of $k$-points as an $\mathcal{L}_r$-structure in the field $k$: let $D\subset k$ be the definable subset given by the formula $\phi(x): x^2=1$ and let $\sim$ be the equivalence relation given just by equality. We interpret the group operation on $G(k)$ by multiplication in $k$ and we interpret the identity in $G(k)$ by $1\in D$. Now consider the $\mathcal{L}_g$-sentence $\phi$ given by $\forall x\forall y(xy=yx)$. Again, our interpretation of $G(k)$ in $k$ allows us to ``translate" this sentence into the $\mathcal{L}_r$-sentence $\psi$ given by $$\forall a\forall b((a^2=1\wedge b^2=1)\implies ab=ba)$$
+		\item Let's go for a more ambitious and illustrative example. Consider the elliptic curve $E/\bR$ given in Weierstrass form by $y^2=x^3+\pi$. Its group of $\bR$-points constitute an $\mathcal{L}_g$-structure and we can interpret it in the $\mathcal{L}_r$-structure $\bR$: let $D\subset\bR^3$ be the subset defined by $\phi(x,y,z,\pi)$ given by $$(y^2z=x^3+\pi z^3)\wedge (x\neq 0 \vee y\neq 0 \vee z\neq 0)$$ and consider the equivalence relation $(a_0,a_1,a_2)\sim (b_0,b_1,b_2)$ iff $\exists\lambda(\lambda\neq 0\wedge\bigwedge_{i=0}^2 a_i=\lambda b_i$. The class $[(a,b,c)]_{\sim}$ will be referred to by $[a:b:c]$, as is typical with projective coordinates. The identity element is interpreted by $[0:1:0]$ and the group operation is interpreted by the function $[x_0:y_0:z_0]\cdot[x_1:y_1:z_1]=[x_2:y_2:z_2]$ whose graph is defined $\phi: \phi_1\vee\phi_2\vee (\phi_3\wedge (\phi_4\vee \phi_5\vee \phi_6)))$, where
+		\begin{align*}
+		\phi_1 &: (z_0=0)\wedge (x_2=x_1)\wedge (y_2=y_1)\wedge (z_2=z_1)\\
+		\phi_2 &: (z_1=0)\wedge (x_2=x_0)\wedge (y_2=y_0)\wedge (z_2=z_0)\\
+		\phi_3 &: \exists u\exists v((uz_0=1)\wedge (vz_1=1))\\
+		\phi_4 &: (x_0u=x_1v)\wedge (y_0u+y_1v=0)\wedge (x_2=0)\wedge (y_2=1)\wedge (z_2=0)\\
+		\phi_5 &: (x_0u=x_1v)\wedge \exists s ((2y_0us=1)\wedge (x_2=(3(x_0u)^2s)^2-x_0u-x_1v)\wedge\\& (y_2=-3(x_0u)^2s((3(x_0u)^2s)^2-x_0u-x_1v)-(-(x_0u)^3+2\pi)s))\wedge (z_2=1))\\
+		\phi_6 &: \exists t (t(x_1v-x_0u)=1\wedge (x_2= (t(y_1v-y_0u))^2-x_0u-x_1v)\wedge\\& (y_2=-t(y_1v-y_0u)((t(y_1v-y_0u))^2-x_0u-x_1v)-t(y_0ux_1v-y_1vx_0u))\wedge (z_2=1))
+		\end{align*}
 
-The group of $k$-points of a group variety is interpretable in $k$ (with parameters):
+		Note that this is simply a projectivized and logicized version of the algorithm given in Silverman \cite{silverman2009arithmetic}[Group Law Algorithm 2.3] when $a_1=a_2=a_3=a_4=0$ and  $a_6=\pi$. We can translate the $\mathcal{L}_g$-sentence $\phi$ given by \begin{equation}
+		\exists x\exists y (x^2=e\wedge y^2=e\wedge\forall z(z^2=e\implies (z=x\vee z=y)))
+		\end{equation}
+		into an equivalent $\mathcal{L}_r$-formula $\psi$ given by \begin{equation}\psi_1\wedge\psi_2\wedge (\psi_3\implies(\psi_4 \vee \psi_5))
+		\end{equation}
+		where
+		\begin{align*}
+		\psi_1 &: \exists x_0\exists y_0\exists z_0\exists x_1\exists y_1\exists z_1((y_0^2z_0=x_0^3+\pi z_0^3)\wedge (y_1^2z_1=x_1^3+\pi z_1^3))\\
+		\psi_2 &: \exists \lambda_0\exists\lambda_1(\lambda_0\neq 0\wedge\lambda_1\neq 0 \wedge\phi(x_0,y_0,z_0,x_0,y_0,z_0,0,\lambda_0,0)\\&\wedge\phi(x_1,y_1,z_1,x_1,y_1,z_1,0,\lambda_1,0)\\
+		\psi_3 &: \forall x_2\forall y_2\forall z_2 ((y_2^2z_2=x_2^3+\pi z_2^3) \wedge \exists\lambda_2(\lambda_2\neq 0\wedge\phi(x_2,y_2,z_2,x_2,y_2,z_2,0,0,1,0)))\\
+		\psi_4 &: \exists s (s\neq 0\wedge x_2=sx_0\wedge y_2=sy_0\wedge z_2=sz_0)\\
+		\psi_5 &: \exists t(t\neq 0\wedge x_2=tx_1\wedge y_2=ty_1\wedge z_2=tz_1)
+		\end{align*}
+		NOTE: Is there a better way to display all of this? It's quite horrible, but given the complexity of the interpretation I think it's unavoidable...
+	\end{itemize}
+\end{example}
+
+The group of $k$-points of an abelian variety is always interpretable in $k$:
 
 \begin{proposition}
 Let $k$ be a field and $A/k$ an abelian variety. Then the group $A(k)$ is interpretable in the field $k$.
 \end{proposition}
 \begin{proof}
-This is well-known. See, for example, Pillay's article in \cite{bouscaren2009model}. The idea of the is simple enough to describe in short detail: abelian varieties are projective, so one may interpret the $k$-points of $A$ as solutions to a system of homogeneous polynomials in the projective space $\bP^n(k)$, which is the quotient of a definable subset of $k^{n+1}\setminus\{\bar{0}\}$ by a definable equivalence relation. Moreoever, the addition map and the inverse morphisms are regular, meaning they can be locally defined over $k$ by the quotient of two homogeneous polynomials of the same degree.
+This is well-known. See, for example, Pillay's article in \cite{bouscaren2009model}. The example worked out above illustrates the general procedure: abelian varieties are projective, so one may interpret the $k$-points of $A$ as solutions to a system of homogeneous polynomials in the projective space $\bP^n(k)$, which is the quotient of a definable subset of $k^{n+1}$ by a definable equivalence relation. The addition map is a regular morphism, meaning that there are finitely many affine open subsets on which the morphism is given coordinate-wise by the ratio of two homogeneous polynomials of the same degree.
 \end{proof}
 
 We can, in effect, rid ourselves of the pesky parameters that arise out of interpreting a single abelian variety by interpreting group-theoretic statements uniformly across definable families:
 
 \begin{theorem}
-Let $\mathcal{A}\ra S$ be a quasi-projective abelian scheme with $S=\Spec(R)$, where $R$ is of finite type over $\bZ$. Let $k$ be a field and $M\subset S(k)$ a definable subset without parameters. For any sentence $\phi$ in the language of groups, there is a formula $\psi(x_1,\dots, x_n)$ in the language of rings so that if $\mathbf{a}\in M$, then $\mathcal{A}_{\mathbf{a}}(k)$ satisfies $\phi$ if and only if $k$ satisfies $\psi(\mathbf{a})$, where $\mathcal{A}_{\mathbf{a}}/k$ is the fiber of $\mathcal{A}$ over the $k$-point of $S$ corresponding to $\mathbf{a}$. In particular, $\mathcal{A}_{\mathbf{a}}(k)$ satisfies $\phi$ for all $\mathbf{a}\in M$ if and only if $k$ satisfies the sentence $\chi = \forall \mathbf{a}\in M, \psi(\mathbf{a})$.
+Let $\mathcal{A}\ra S$ be a quasi-projective abelian scheme with $S=\Spec(R)$, where $R$ is of finite type over $\bZ$. Let $k$ be a model of an $\mathcal{L}$-theory $T$ which extends the theory of fields and let $M\subset S(k)$ an $\mathcal{L}$-definable subset without parameters given by a formula $\rho$. For any sentence $\phi$ in the language of groups, there is an $\mathcal{L}$-formula $\psi$ so that if $\mathbf{a}\in M$, then $\mathcal{A}_{\mathbf{a}}(k)\models\phi$ if and only if $k\models\psi(\mathbf{a})$, where $\mathcal{A}_{\mathbf{a}}/k$ is the fiber of $\mathcal{A}$ over the $k$-point of $S$ corresponding to $\mathbf{a}$. In particular, $\mathcal{A}_{\mathbf{a}}(k)$ satisfies $\phi$ for all $\mathbf{a}\in M$ if and only if $k$ satisfies the sentence $\chi = \forall \mathbf{a}(\rho(\mathbf{a})\implies \psi(\mathbf{a}))$.
 \end{theorem}
 \begin{proof}
-The first statement is clear from the above proposition. The second statement follows since the data defining $/\mathcal{A}$ is \emph{uniform} in the parameters of $S$, for, at bottom, that is what is \emph{meant} by an abelian scheme.
+NOTE: I've suppressed all the variable contexts in the formulation of the theorem, e.g. I've written just $\rho$ in place of $\rho(x_1,\dots, x_n)$. Is this okay?
+The first statement is clear from the above proposition. The second statement follows since the data defining $\mathcal{A}$ is \emph{uniform} in the parameters of $S$, for, at bottom, that is what is \emph{meant} by an abelian scheme.
 \end{proof}
 
-This gives us a Lefschetz-like transfer-principle:
+\begin{example}
+Consider the family of elliptic curves $y^2=x^3+t$ with $t\neq 0$. Its group of $\bR$-points can be interpreted exactly as the previous example illustrates with the parameter $t\neq 0$ in place of $\pi$. The $\mathcal{L}_g$-sentence $\phi$ given above in equation 1.1 can be interpreted uniformly across the whole family by the $\mathcal{L}_r$-sentence $\chi$ given by $$\forall t (t\neq 0\implies \psi(t)),$$ where $\psi$ is given above in equation 1.2, but $\pi$ replaced by the parameter $t$. The fact that every real elliptic curve of the form $y^2=x^3+t$ has exactly two real 2-torsion points is now expressed symbolically by $\bR\models\chi$.
+\end{example}
+
+We are now ready to formula our Lefschetz-like transfer principle:
 
 \begin{theorem}
 \label{transfer-theorem}
-Let $T$ be a model complete theory extending the theory of fields and let $K$ and $L$ be two models of $T$. Let $\mathcal{A}/S$ and $M$ be as in the above theorem. Let $\phi$ be a sentence in the language of groups. Then $A_{\mathbf{a}}(K)$ satisfies $\phi$ for all $K$-points $\mathbf{a}\in M$ if and only if $A_{\mathbf{b}}(L)$ satisfies $\phi$ for all $L$-points $\mathbf{b}\in M$.
+Let $\mathcal{L}$ be a language extending the language of rings, $T$ a model complete $\mathcal{L}$-theory extending the theory of fields, and $K$ and $L$ two models of $T$. Let $\mathcal{A}/S$ be as in the above theorem. Let $\rho$ be an $\mathcal{L}$-formula such that $M:=\{\mathbf{a}:K\models \rho(\mathbf{a})\}\subset S(K)$ and $N:=\{\mathbf{b}:L\models \rho(\mathbf{b})\}\subset S(L)$. Let $\phi$ be a sentence in the language of groups. Then $A_{\mathbf{a}}(K)$ satisfies $\phi$ for all $K$-points $\mathbf{a}\in M$ if and only if $A_{\mathbf{b}}(L)$ satisfies $\phi$ for all $L$-points $\mathbf{b}\in M$.
 \end{theorem}
+\begin{proof}
+By the above theorem, there is an $\mathcal{L}$-formula $\psi$ so that $A_{\mathbf{a}}(K)$ satisfies $\phi$ for all $\mathbf{a}\in M$ iff and only if $K\models \psi$. Since $T$ is model complete, this is the case if and only if $L\models \psi$, which in turn is the case if and only if $A_{\mathbf{b}}(L)$ satisfies $\phi$ for all $\mathbf{b}\in N$.
+\end{proof}
 
-The final step is to prove that there are enough definable families to actually make use of this transfer principle.
+\begin{example}
+Let us return the family of elliptic curves $\mathcal{E}/S$ from Section 1.1. Now let $k$ be any algebraically closed field of characteristic zero. As previously discussed, the fibers over the $k$-valued points of $S$ constitute all elliptic curves over $k$, up to isomorphism. Consider the $\mathcal{L}_g$-sentence $\phi$ given by $$\exists a_1\dots\exists a_{n^2}\left(\bigwedge_{i=1}^{n^2} a_i^{n}=e\wedge \forall b(b^n=e\implies \bigvee_{i=1}^{n^2}b=a_i)\right),$$ which says that there are exactly $n^2$ points killed by $n$. Proposition \ref{torsion-C} tells us that for every complex elliptic curve $A/\bC$, $A(\bC)$ satisfies $\phi$. Thus, taking $\rho$ to be the sentence $\forall a\forall b(4a^3+27b^2\neq 0)$, the above Theorem \ref{transfer-theorem} tells us that every elliptic curve $E/k$ also satisfies $\phi$.
+\end{example}
+
+The final step is to prove that there are enough definable families to actually make use of this transfer principle for higher dimensional abelian varieties.
 
 \begin{lemma}
 \label{comprehensive-family}
